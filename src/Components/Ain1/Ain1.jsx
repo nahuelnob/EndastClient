@@ -33,7 +33,8 @@ const Ain1 = () => {
     });
   }, []); // El segundo parámetro [] asegura que este efecto se ejecute solo una vez al montar el componente
 
-  return <div>{ain1}</div>;
+  return (
+  <div>{ain1}</div>);
 };
 
 export default Ain1;

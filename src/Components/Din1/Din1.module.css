@@ -1,0 +1,18 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* border: solid 1px red; */
+}
+.fondo{
+    width: 10rem;
+    height: 2rem;
+    background-color: rgb(90,90,90);
+
+}
+.barra{
+    height: 2rem;
+    transition: ease-in-out 0.5s;  
+    z-index: 1;
+}

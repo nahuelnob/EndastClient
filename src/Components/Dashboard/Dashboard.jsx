@@ -15,18 +15,18 @@ import "./Dashboard.css";
 const Dashboard = () => {
   return (
     <div className="container">
-      <div><Din0/></div>
-      <div><Din1/></div>
-      <div><Din2/></div>
-      <div><Din3/></div>
-      <div><Ain0/></div>
-      <div><Ain1/></div>
-      <div><Ain2/></div>
-      <div><Ain3/></div>
-      <div><Out0/></div>
-      <div><Out1/></div>
-      <div><Out2/></div>
-      <div><Out3/></div>
+      <div className="parte"><Din0/></div>
+      <div className="parte"><Din1/></div>
+      <div className="parte"><Din2/></div>
+      <div className="parte"><Din3/></div>
+      <div className="parte"><Ain0/></div>
+      <div className="parte"><Ain1/></div>
+      <div className="parte"><Ain2/></div>
+      <div className="parte"><Ain3/></div>
+      <div className="parte"><Out0/></div>
+      <div className="parte"><Out1/></div>
+      <div className="parte"><Out2/></div>
+      <div className="parte"><Out3/></div>
     </div>
   );
 };

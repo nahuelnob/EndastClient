@@ -6,8 +6,7 @@
     grid-template-rows: repeat(3, 1fr);
 }
 
-.container div{
-    /* border: 1px solid brown; */
+.parte{
     background: radial-gradient(50rem circle at center, rgb(50,50,50), rgb(10,10,10));
     display: flex;
     align-items: center;
