@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import mqtt from "mqtt";
+import style from "./Out0.module.css";
 const TOPIC = "64c314be56857449102a9d4b/testid/inLngKM48P/actdata";
 const HOST = "192.168.0.46";
 
 const Out0 = () => {
+  const [switcher, setSwitcher] = useState(false);
+
   const client = mqtt.connect(`ws://${HOST}:8083/mqtt`);
 
   client.on("connect", () => {
@@ -18,23 +21,49 @@ const Out0 = () => {
     });
   });
 
-  const prender = (mensaje) => {
-    client.publish(TOPIC, mensaje, (error) => {
-      if (error) console.error(error);
-      console.log(`${mensaje} publicado`);
-    });
-  };
-  const apagar = (mensaje) => {
-    client.publish(TOPIC, mensaje, (error) => {
-      if (error) console.error(error);
-      console.log(`${mensaje} publicado`);
-    });
+  const handlerSwitch = () => {
+    if (switcher) {
+      setSwitcher(false),
+        client.publish(TOPIC, "{value:false}", (error) => {
+          if (error) console.error(error);
+        });
+    } else {
+      setSwitcher(true),
+        client.publish(TOPIC, "{value:true}", (error) => {
+          if (error) console.error(error);
+        });
+    }
   };
 
   return (
-    <div>
-      <button onClick={() => prender("{value : true}")}>On</button>
-      <button onClick={() => apagar("{value : false}")}>Off</button>
+    <div className={style.container}>
+      <h2>out0</h2>
+      <section className={style.luces}>
+        <div
+          className={style.prendido}
+          style={{
+            backgroundColor: `${switcher ? "green" : "rgb(46,104,46)"}`,
+            filter: `${switcher ? "drop-shadow(0px 0px 5px green)" : "none"}`,
+          }}
+        ></div>
+        <div
+          className={style.apagado}
+          style={{
+            backgroundColor: `${switcher ? "rgb(219,51,51)" : "red"}`,
+            filter: `${switcher ? "none" : "drop-shadow(0px 0px 5px red)"}`,
+          }}
+        ></div>
+      </section>
+
+      <section className={style.switch}>
+        <button
+          onClick={handlerSwitch}
+          className={style.bola}
+          style={{
+            transform: `${switcher ? "translateX(-4rem)" : "translateX(0rem)"}`,
+          }}
+        ></button>
+      </section>
     </div>
   );
 };

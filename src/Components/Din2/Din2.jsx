@@ -10,10 +10,10 @@ const Din2 = () => {
   const dispatch = useDispatch();
   const din2 = useSelector((state) => state.din2);
 
-    // Busca el numero dentro del mensaje
-    var match = din2.match(/\d+/);
+  // Busca el numero dentro del mensaje
+  var match = din2.match(/\d+/);
 
-    const porcentaje = Math.round((Number(match[0]) * 100) / 4095);
+  const porcentaje = Math.round((Number(match[0]) * 100) / 4095);
 
   useEffect(() => {
     const client = mqtt.connect(`ws://${HOST}:8083/mqtt`);
@@ -30,7 +30,6 @@ const Din2 = () => {
         }
       });
     });
-
 
     // Manejo de mensajes recibidos
     client.on("message", (topic, message) => {
