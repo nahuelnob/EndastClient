@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect } from "react";
 import mqtt from "mqtt";
 import { editAin1 } from "../../Redux/actions";
+import style from "./Ain1.module.css";
 const TOPIC = "64c314be56857449102a9d4b/testid/iSK4MVs6tO/sdata";
 const HOST = "192.168.0.46";
 
@@ -10,16 +11,23 @@ const Ain1 = () => {
   const dispatch = useDispatch();
   const ain1 = useSelector((state) => state.ain1);
 
+  // Busca el numero dentro del mensaje
+  var match = ain1.match(/\d+/);
+
+  const porcentaje = Math.round((Number(match[0]) * 100) / 4095);
+
   useEffect(() => {
     const client = mqtt.connect(`ws://${HOST}:8083/mqtt`);
 
     client.on("connect", () => {
-      console.log("Conectado al broker MQTT");
+      // console.log("Conectado al broker MQTT");
 
       // Suscripcion al topico
       client.subscribe(TOPIC, (err) => {
         if (!err) {
-          console.log(`Suscrito al tema: ${TOPIC}`);
+          // console.log(`Suscrito al tema: ${TOPIC}`);
+        } else {
+          console.log(`Error al suscribirse a: ${TOPIC}`);
         }
       });
     });
@@ -34,7 +42,27 @@ const Ain1 = () => {
   }, []); // El segundo parámetro [] asegura que este efecto se ejecute solo una vez al montar el componente
 
   return (
-  <div>{ain1}</div>);
+    <div className={style.container}>
+      <h2> ain1</h2>
+      {`value : ${match}`}
+      <div className={style.fondoBarra}>
+        <div
+          className={style.barra}
+          style={{
+            width: `${porcentaje}%`,
+            backgroundColor: `${
+              porcentaje > 25 && porcentaje < 75
+                ? "rgb(255,255,84)"
+                : porcentaje > 75
+                ? "rgb(219,51,51)"
+                : "rgb(46,104,46)"
+            }`,
+          }}
+        ></div>
+      </div>
+      <h1>{porcentaje}%</h1>
+    </div>
+  );
 };
 
 export default Ain1;
