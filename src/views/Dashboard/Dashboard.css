@@ -4,16 +4,17 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  column-gap: 0.5rem;
-  row-gap: 0.5rem;
+  column-gap: 0.2rem;
+  row-gap: 0.2rem;
 }
 
 .parte {
   background: radial-gradient(
     50rem circle at center,
-    rgb(50, 50, 50),
-    rgb(10, 10, 10)
+    rgba(50, 50, 50,0.8),
+    rgba(10, 10, 10,0.5)
   );
+  /* border-radius: 1rem; */
   display: flex;
   align-items: center;
   justify-content: center;

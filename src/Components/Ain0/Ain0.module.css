@@ -4,7 +4,6 @@
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    /* border: solid 1px red; */
 }
 .fondoBarra{
     width: 10rem;
@@ -13,6 +12,7 @@
     border-radius: 0.2rem;
     margin-top: 1rem;
     margin-bottom: -1rem;
+    overflow: hidden;
     
 }
 .barra{

@@ -43,6 +43,7 @@ const Din0 = () => {
 
   return (
     <div className={style.container}>
+      <img src="../../public/gear-solid.svg" alt="" />
       <h2> din0</h2>
       {`value : ${match}`}
       <div className={style.fondoBarra}>
