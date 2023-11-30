@@ -20,7 +20,7 @@ body::before {
   background-image: url('../public/bg-6.avif');
   background-size: cover;
   background-position: center;
-  filter: grayscale(20%) opacity(60%);
+  filter: grayscale(20%) opacity(60%) blur(2px);
   pointer-events: none;
 }
 
