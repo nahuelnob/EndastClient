@@ -10,3 +10,10 @@
     grid-template-columns: 3% 97%;
     grid-template-rows: 1fr;
 }
+
+@media screen and (max-width: 768px) {
+    .main {
+        grid-template-columns: 1fr;
+        grid-template-rows: 3% 97%;
+    }
+  }

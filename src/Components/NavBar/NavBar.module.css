@@ -1,0 +1,17 @@
+.container {
+    background-color: #202020;
+    width: 100%;
+    height: 92vh;
+    translate: -0.5rem;
+    padding-right: 0.5rem;
+    color: antiquewhite;
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        width: 100%;
+        /* translate: -0.3rem; */
+        padding-left: 5rem;
+        height: 2.5rem;
+    }
+  }

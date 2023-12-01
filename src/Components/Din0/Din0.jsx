@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { editDin0 } from "../../Redux/actions";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import mqtt from "mqtt";
 import style from "./Din0.module.css";
 const TOPIC = "64c314be56857449102a9d4b/testid/aPtCeiVxcp/sdata";
@@ -9,11 +9,22 @@ const HOST = "192.168.0.46";
 const Din0 = () => {
   const dispatch = useDispatch();
   const din0 = useSelector((state) => state.din0);
+  const [name, setName] = useState("din0");
+  const [configName, setConfigName] = useState(false);
 
-    // Busca el numero dentro del mensaje
-    var match = din0.match(/\d+/);
+  const handlerName = (e) => {
+    setName(e.target.value);
+  };
 
-    const porcentaje = Math.round((Number(match[0]) * 100) / 4095);
+  const handlerConfigName = () => {
+    !configName && setConfigName(true);
+    configName && setConfigName(false);
+  };
+
+  // Busca el numero dentro del mensaje
+  var match = din0.match(/\d+/);
+
+  const porcentaje = Math.round((Number(match[0]) * 100) / 4095);
 
   useEffect(() => {
     const client = mqtt.connect(`ws://${HOST}:8083/mqtt`);
@@ -31,7 +42,6 @@ const Din0 = () => {
       });
     });
 
-
     // Manejo de mensajes recibidos
     client.on("message", (topic, message) => {
       dispatch(editDin0(message.toString()));
@@ -40,12 +50,24 @@ const Din0 = () => {
       );
     });
   }, []); // El segundo parámetro [] asegura que este efecto se ejecute solo una vez al montar el componente
+  {
+  }
 
   return (
     <div className={style.container}>
-      <img src="../../public/gear-solid.svg" alt="" />
-      <h2> din0</h2>
-      {`value : ${match}`}
+      <header className={style.titulo}>
+        <p style={{ marginLeft: "1rem" }}> {name}</p>
+        <button
+          className={style.buttonConfig}
+          onClick={() => handlerConfigName()}
+        >
+          <img src="../../public/gear-solid.svg" alt="" />
+        </button>
+      </header>
+      {/* {`value : ${match}`} */}
+      <section className={style.porcentaje}>
+        <h1 className={style.porc}>{porcentaje}%</h1>
+      </section>
       <div className={style.fondoBarra}>
         <div
           className={style.barra}
@@ -61,7 +83,27 @@ const Din0 = () => {
           }}
         ></div>
       </div>
-      <h1>{porcentaje}%</h1>
+      <section className={style.variacion}></section>
+      <div
+        className={style.inputDiv}
+        style={{ display: `${configName ? "flex" : "none"}` }}
+      >
+        <h4>Nombre: </h4>
+        <input
+          className={style.input}
+          type="text"
+          name="name"
+          value={name}
+          onChange={handlerName}
+        />
+        <button
+          className={style.botonCambiar}
+          onClick={() => handlerConfigName()}
+        >
+          {" "}
+          Cambiar{" "}
+        </button>
+      </div>
     </div>
   );
 };

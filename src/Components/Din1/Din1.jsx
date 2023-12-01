@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { editDin1 } from "../../Redux/actions";
-import React, { useEffect } from "react";
+import React, { useEffect , useState} from "react";
 import mqtt from "mqtt";
 import style from "./Din1.module.css";
 const TOPIC = "64c314be56857449102a9d4b/testid/O2RMRlSUYU/sdata";
@@ -9,6 +9,19 @@ const HOST = "192.168.0.46";
 const Din1 = () => {
   const dispatch = useDispatch();
   const din1 = useSelector((state) => state.din1);
+  const [name, setName] = useState("din1");
+  const [configName, setConfigName] = useState(false);
+
+  
+  const handlerName = (e) => {
+    setName(e.target.value);
+  };
+
+  const handlerConfigName = () => {
+    !configName && setConfigName(true);
+    configName && setConfigName(false);
+  };
+
   
   // Busca el numero dentro del mensaje
   var match = din1.match(/\d+/);
@@ -40,10 +53,43 @@ const Din1 = () => {
     });
   }, []); // El segundo parámetro [] asegura que este efecto se ejecute solo una vez al montar el componente
 
+  // return (
+  //   <div className={style.container}>
+  //     <h2> din1</h2>
+  //     {`value : ${match}`}
+  //     <div className={style.fondoBarra}>
+  //       <div
+  //         className={style.barra}
+  //         style={{
+  //           width: `${porcentaje}%`,
+  //           backgroundColor: `${
+  //             porcentaje > 25 && porcentaje < 75
+  //               ? "rgb(255,255,84)"
+  //               : porcentaje > 75
+  //               ? "rgb(219,51,51)"
+  //               : "rgb(46,104,46)"
+  //           }`,
+  //         }}
+  //       ></div>
+  //     </div>
+  //     <h1>{porcentaje}%</h1> 
+  //   </div>
+  // );
   return (
     <div className={style.container}>
-      <h2> din1</h2>
-      {`value : ${match}`}
+      <header className={style.titulo}>
+        <p style={{ marginLeft: "1rem" }}> {name}</p>
+        <button
+          className={style.buttonConfig}
+          onClick={() => handlerConfigName()}
+        >
+          <img src="../../public/gear-solid.svg" alt="" />
+        </button>
+      </header>
+      {/* {`value : ${match}`} */}
+      <section className={style.porcentaje}>
+        <h1 className={style.porc}>{porcentaje}%</h1>
+      </section>
       <div className={style.fondoBarra}>
         <div
           className={style.barra}
@@ -59,7 +105,27 @@ const Din1 = () => {
           }}
         ></div>
       </div>
-      <h1>{porcentaje}%</h1>
+      <section className={style.variacion}></section>
+      <div
+        className={style.inputDiv}
+        style={{ display: `${configName ? "flex" : "none"}` }}
+      >
+        <h4>Nombre: </h4>
+        <input
+          className={style.input}
+          type="text"
+          name="name"
+          value={name}
+          onChange={handlerName}
+        />
+        <button
+          className={style.botonCambiar}
+          onClick={() => handlerConfigName()}
+        >
+          {" "}
+          Cambiar{" "}
+        </button>
+      </div>
     </div>
   );
 };

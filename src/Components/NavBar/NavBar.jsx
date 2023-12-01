@@ -1,18 +1,19 @@
+import style from './NavBar.module.css'
 const NavBar = () => {
     return (
-        <nav>
-            <button>ain0</button>
-            <button>ain1</button>
-            <button>ain2</button>
-            <button>ain3</button>
-            <button>din0</button>
-            <button>din1</button>
-            <button>din2</button>
-            <button>din3</button>
-            <button>out0</button>
-            <button>out1</button>
-            <button>out2</button>
-            <button>out3</button>
+        <nav className={style.container}>
+            <div>ain0</div>
+            <div>ain1</div>
+            <div>ain2</div>
+            <div>ain3</div>
+            <div>din0</div>
+            <div>din1</div>
+            <div>din2</div>
+            <div>din3</div>
+            <div>out0</div>
+            <div>out1</div>
+            <div>out2</div>
+            <div>out3</div>
         </nav>
     )
 }

@@ -1,6 +1,7 @@
+import style from "./Banner.module.css"
 const Banner = () => {
     return (
-        <div><h3>PadiV3</h3></div>
+        <div className={style.container}><h3>PadiV3</h3></div>
     )
 }
 

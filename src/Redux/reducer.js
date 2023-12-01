@@ -1,7 +1,7 @@
 import { EDIT_DIN0, EDIT_DIN1, EDIT_DIN2, EDIT_DIN3, EDIT_AIN0, EDIT_AIN1, EDIT_AIN2, EDIT_AIN3 } from "./types";
 
 const initialState = {
-  din0: '{value:4000}',
+  din0: '{value:3000}',
   din1: '{value:100}',
   din2: '{value:100}',
   din3: '{value:100}',
