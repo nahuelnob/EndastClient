@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-// import { editUserRedux } from "../../Redux/actions";
-import React, { useEffect } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import mqtt from "mqtt";
 import { editAin3 } from "../../Redux/actions";
 import style from "./Ain3.module.css";
@@ -10,14 +10,33 @@ const HOST = "192.168.0.46";
 const Ain3 = () => {
   const dispatch = useDispatch();
   const ain3 = useSelector((state) => state.ain3);
+  const [name, setName] = useState("ain3");
+  const [configName, setConfigName] = useState(false);
 
-  // Busca el numero dentro del mensaje
-  var match = ain3.match(/\d+/);
+  const handlerName = (e) => {
+    setName(e.target.value);
+  };
 
-  const porcentaje = Math.round((Number(match[0]) * 100) / 4095);
+  const handlerConfigName = () => {
+    !configName && setConfigName(true);
+    configName && setConfigName(false);
+  };  
+
+  const porcentaje = Math.round((Number(ain3) * 100) / 4095);
 
   useEffect(() => {
     const client = mqtt.connect(`ws://${HOST}:8083/mqtt`);
+
+    const post = async (value) => {
+      try {
+        const { data } = await axios.post(
+          `http://${HOST}:3001/api/ain3`,
+          value
+        );
+      } catch (error) {
+        window.alert(error);
+      }
+    };
 
     client.on("connect", () => {
       // console.log("Conectado al broker MQTT");
@@ -34,33 +53,67 @@ const Ain3 = () => {
 
     // Manejo de mensajes recibidos
     client.on("message", (topic, message) => {
-      dispatch(editAin3(message.toString()));
-      console.log(
-        `Mensaje recibido en el tema ${topic}: ${message.toString()}`
-      );
+      const match = message.toString().match(/\d+/);
+      if (match) {
+        dispatch(editAin3(match[0]));
+        post({ value: match[0] });
+        console.log(`Mensaje recibido en el tema ${topic}: ${message.toString()}`);
+      }
     });
   }, []); // El segundo parámetro [] asegura que este efecto se ejecute solo una vez al montar el componente
 
   return (
     <div className={style.container}>
-      <h2> ain3</h2>
-      {`value : ${match}`}
-      <div className={style.fondoBarra}>
-        <div
-          className={style.barra}
-          style={{
-            width: `${porcentaje}%`,
-            backgroundColor: `${
-              porcentaje > 25 && porcentaje < 75
-                ? "rgb(255,255,84)"
-                : porcentaje > 75
-                ? "rgb(219,51,51)"
-                : "rgb(46,104,46)"
-            }`,
-          }}
-        ></div>
+      <header className={style.titulo}>
+        <p style={{ marginLeft: "1rem" }}> {name}</p>
+        <button
+          className={style.buttonConfig}
+          onClick={() => handlerConfigName()}
+        >
+          <img src="../../public/gear-solid.svg" alt="" />
+        </button>
+      </header>
+      <div className={style.main}>
+        <section className={style.porcentaje}>
+          <h1 className={style.porc}>{porcentaje}%</h1>
+        </section>
+        <section className={style.fondoBarra}>
+          <div
+            className={style.barra}
+            style={{
+              width: `${porcentaje}%`,
+              backgroundColor: `${
+                porcentaje > 25 && porcentaje < 75
+                  ? "rgb(255,255,84)"
+                  : porcentaje > 75
+                  ? "rgb(219,51,51)"
+                  : "rgb(46,104,46)"
+              }`,
+            }}
+          ></div>
+        </section>
+        {/* <section className={style.variacion}>Variacion</section> */}
       </div>
-      <h1>{porcentaje}%</h1>
+      <div
+        className={style.inputDiv}
+        style={{ display: `${configName ? "flex" : "none"}` }}
+      >
+        <h4>Nombre: </h4>
+        <input
+          className={style.input}
+          type="text"
+          name="name"
+          value={name}
+          onChange={handlerName}
+        />
+        <button
+          className={style.botonCambiar}
+          onClick={() => handlerConfigName()}
+        >
+          {" "}
+          Cambiar{" "}
+        </button>
+      </div>
     </div>
   );
 };

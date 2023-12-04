@@ -1,14 +1,14 @@
 import { EDIT_DIN0, EDIT_DIN1, EDIT_DIN2, EDIT_DIN3, EDIT_AIN0, EDIT_AIN1, EDIT_AIN2, EDIT_AIN3 } from "./types";
 
 const initialState = {
-  din0: '{value:3000}',
-  din1: '{value:100}',
-  din2: '{value:100}',
-  din3: '{value:100}',
-  ain0: '{value:100}',
-  ain1: '{value:0}',
-  ain2: '{value:100}',
-  ain3: '{value:100}',
+  din0: false,
+  din1: false,
+  din2: false,
+  din3: false,
+  ain0: 0,
+  ain1: 0,
+  ain2: 0,
+  ain3: 0,
 };
 
 const rootReducer = (state = initialState, { type, payload }) => {

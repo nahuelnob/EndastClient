@@ -3,17 +3,10 @@
     grid-template-columns: 1fr ;
     grid-template-rows: 5% 95%;
     align-items: center;
+    justify-items: center;
 }
 
-.main{
-    display: grid;
-    grid-template-columns: 3% 97%;
-    grid-template-rows: 1fr;
+.Banner{
+    background-color: aqua;
+    width: 100%;
 }
-
-@media screen and (max-width: 768px) {
-    .main {
-        grid-template-columns: 1fr;
-        grid-template-rows: 3% 97%;
-    }
-  }

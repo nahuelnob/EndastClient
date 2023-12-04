@@ -6,6 +6,17 @@ const HOST = "192.168.0.46";
 
 const Out0 = () => {
   const [switcher, setSwitcher] = useState(false);
+  const [name, setName] = useState("out0");
+  const [configName, setConfigName] = useState(false);
+
+  const handlerName = (e) => {
+    setName(e.target.value);
+  };
+
+  const handlerConfigName = () => {
+    !configName && setConfigName(true);
+    configName && setConfigName(false);
+  };
 
   const client = mqtt.connect(`ws://${HOST}:8083/mqtt`);
 
@@ -37,15 +48,16 @@ const Out0 = () => {
 
   return (
     <div className={style.container}>
-      <h2>out0</h2>
+      <header className={style.titulo}>
+        <p style={{ marginLeft: "1rem" }}> {name}</p>
+        <button
+          className={style.buttonConfig}
+          onClick={() => handlerConfigName()}
+        >
+          <img src="../../public/gear-solid.svg" alt="" />
+        </button>
+      </header>
       <section className={style.luces}>
-        <div
-          className={style.prendido}
-          style={{
-            backgroundColor: `${switcher ? "green" : "rgb(46,104,46)"}`,
-            filter: `${switcher ? "drop-shadow(0px 0px 5px green)" : "none"}`,
-          }}
-        ></div>
         <div
           className={style.apagado}
           style={{
@@ -53,17 +65,52 @@ const Out0 = () => {
             filter: `${switcher ? "none" : "drop-shadow(0px 0px 5px red)"}`,
           }}
         ></div>
+        <div
+          className={style.prendido}
+          style={{
+            backgroundColor: `${
+              switcher ? "rgb(34, 163, 34)" : "rgb(46,104,46)"
+            }`,
+            filter: `${
+              switcher ? "drop-shadow(0px 0px 5px rgb(46,104,46))" : "none"
+            }`,
+          }}
+        ></div>
       </section>
 
-      <section className={style.switch}>
-        <button
-          onClick={handlerSwitch}
-          className={style.bola}
-          style={{
-            transform: `${switcher ? "translateX(-4rem)" : "translateX(0rem)"}`,
-          }}
-        ></button>
+      <section className={style.switchDiv}>
+        <div className={style.switch}>
+          <button
+            onClick={handlerSwitch}
+            className={style.bola}
+            style={{
+              transform: `${
+                switcher ? "translateX(0rem)" : "translateX(-4rem)"
+              }`,
+            }}
+          ></button>
+        </div>
       </section>
+      <div
+        className={style.inputDiv}
+        style={{ display: `${configName ? "flex" : "none"}` }}
+      >
+        <h4>Nombre: </h4>
+        <input
+          className={style.input}
+          type="text"
+          name="name"
+          value={name}
+          onChange={handlerName}
+        />
+        <button
+          className={style.botonCambiar}
+          onClick={() => handlerConfigName()}
+        >
+          {" "}
+          Cambiar{" "}
+        </button>
+      </div>
     </div>
   );
 };

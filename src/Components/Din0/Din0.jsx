@@ -7,8 +7,8 @@ const TOPIC = "64c314be56857449102a9d4b/testid/aPtCeiVxcp/sdata";
 const HOST = "192.168.0.46";
 
 const Din0 = () => {
-  const dispatch = useDispatch();
   const din0 = useSelector((state) => state.din0);
+  const dispatch = useDispatch();
   const [name, setName] = useState("din0");
   const [configName, setConfigName] = useState(false);
 
@@ -20,11 +20,6 @@ const Din0 = () => {
     !configName && setConfigName(true);
     configName && setConfigName(false);
   };
-
-  // Busca el numero dentro del mensaje
-  var match = din0.match(/\d+/);
-
-  const porcentaje = Math.round((Number(match[0]) * 100) / 4095);
 
   useEffect(() => {
     const client = mqtt.connect(`ws://${HOST}:8083/mqtt`);
@@ -44,14 +39,13 @@ const Din0 = () => {
 
     // Manejo de mensajes recibidos
     client.on("message", (topic, message) => {
-      dispatch(editDin0(message.toString()));
       console.log(
         `Mensaje recibido en el tema ${topic}: ${message.toString()}`
       );
+      const match = message.toString().match(/\d+/);
+      match[0] === "1" ? dispatch(editDin0(true)) : dispatch(editDin0(false));
     });
   }, []); // El segundo parámetro [] asegura que este efecto se ejecute solo una vez al montar el componente
-  {
-  }
 
   return (
     <div className={style.container}>
@@ -64,26 +58,26 @@ const Din0 = () => {
           <img src="../../public/gear-solid.svg" alt="" />
         </button>
       </header>
-      {/* {`value : ${match}`} */}
-      <section className={style.porcentaje}>
-        <h1 className={style.porc}>{porcentaje}%</h1>
-      </section>
-      <div className={style.fondoBarra}>
+      <h1 style={{color:`${din0 ? "rgb(46,104,46)" : "rgb(219,51,51)"}`, transition:"ease-in-out 0.3s"}}> {din0 ? "Prendido" : "Apagado"}</h1>
+      <section className={style.luces}>
         <div
-          className={style.barra}
+          className={style.apagado}
           style={{
-            width: `${porcentaje}%`,
-            backgroundColor: `${
-              porcentaje > 25 && porcentaje < 75
-                ? "rgb(255,255,84)"
-                : porcentaje > 75
-                ? "rgb(219,51,51)"
-                : "rgb(46,104,46)"
+            backgroundColor: `${din0 ? "rgb(219,51,51)" : "red"}`,
+            filter: `${din0 ? "none" : "drop-shadow(0px 0px 5px red)"}`,
+          }}
+        ></div>
+        <div
+          className={style.prendido}
+          style={{
+            backgroundColor: `${din0 ? "rgb(34, 163, 34)" : "rgb(46,104,46)"}`,
+            filter: `${
+              din0 ? "drop-shadow(0px 0px 5px rgb(46,104,46))" : "none"
             }`,
           }}
         ></div>
-      </div>
-      <section className={style.variacion}></section>
+      </section>
+
       <div
         className={style.inputDiv}
         style={{ display: `${configName ? "flex" : "none"}` }}

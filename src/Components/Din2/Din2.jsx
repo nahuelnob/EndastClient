@@ -22,12 +22,6 @@ const Din2 = () => {
     configName && setConfigName(false);
   };
 
-
-  // Busca el numero dentro del mensaje
-  var match = din2.match(/\d+/);
-
-  const porcentaje = Math.round((Number(match[0]) * 100) / 4095);
-
   useEffect(() => {
     const client = mqtt.connect(`ws://${HOST}:8083/mqtt`);
 
@@ -46,10 +40,11 @@ const Din2 = () => {
 
     // Manejo de mensajes recibidos
     client.on("message", (topic, message) => {
-      dispatch(editDin2(message.toString()));
       console.log(
         `Mensaje recibido en el tema ${topic}: ${message.toString()}`
       );
+      const match = message.toString().match(/\d+/);
+      match[0] === "1" ? dispatch(editDin2(true)) : dispatch(editDin2(false));
     });
   }, []); // El segundo parámetro [] asegura que este efecto se ejecute solo una vez al montar el componente
 
@@ -64,26 +59,26 @@ const Din2 = () => {
           <img src="../../public/gear-solid.svg" alt="" />
         </button>
       </header>
-      {/* {`value : ${match}`} */}
-      <section className={style.porcentaje}>
-        <h1 className={style.porc}>{porcentaje}%</h1>
-      </section>
-      <div className={style.fondoBarra}>
+      <h1 style={{color:`${din2 ? "rgb(46,104,46)" : "rgb(219,51,51)"}`, transition:"ease-in-out 0.3s"}}> {din2 ? "Prendido" : "Apagado"}</h1>
+      <section className={style.luces}>
         <div
-          className={style.barra}
+          className={style.apagado}
           style={{
-            width: `${porcentaje}%`,
-            backgroundColor: `${
-              porcentaje > 25 && porcentaje < 75
-                ? "rgb(255,255,84)"
-                : porcentaje > 75
-                ? "rgb(219,51,51)"
-                : "rgb(46,104,46)"
+            backgroundColor: `${din2 ? "rgb(219,51,51)" : "red"}`,
+            filter: `${din2 ? "none" : "drop-shadow(0px 0px 5px red)"}`,
+          }}
+        ></div>
+        <div
+          className={style.prendido}
+          style={{
+            backgroundColor: `${din2 ? "rgb(34, 163, 34)" : "rgb(46,104,46)"}`,
+            filter: `${
+              din2 ? "drop-shadow(0px 0px 5px rgb(46,104,46))" : "none"
             }`,
           }}
         ></div>
-      </div>
-      <section className={style.variacion}></section>
+      </section>
+
       <div
         className={style.inputDiv}
         style={{ display: `${configName ? "flex" : "none"}` }}

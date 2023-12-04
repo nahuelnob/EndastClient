@@ -6,11 +6,11 @@ import style from './PadiV3.module.css'
 const PadiV3 = () => {
   return (
     <div className={style.container}>
-      <section>
+      <section className={style.Banner}>
         <Banner />
       </section>
-      <section className={style.main}>
-        <NavBar/>
+      <section>
+        {/* <NavBar/> */}
         <Dashboard />
       </section>
     </div>

@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { editDin1 } from "../../Redux/actions";
-import React, { useEffect , useState} from "react";
+import React, { useEffect, useState } from "react";
 import mqtt from "mqtt";
 import style from "./Din1.module.css";
 const TOPIC = "64c314be56857449102a9d4b/testid/O2RMRlSUYU/sdata";
@@ -12,7 +12,6 @@ const Din1 = () => {
   const [name, setName] = useState("din1");
   const [configName, setConfigName] = useState(false);
 
-  
   const handlerName = (e) => {
     setName(e.target.value);
   };
@@ -21,12 +20,6 @@ const Din1 = () => {
     !configName && setConfigName(true);
     configName && setConfigName(false);
   };
-
-  
-  // Busca el numero dentro del mensaje
-  var match = din1.match(/\d+/);
-
-  const porcentaje = Math.round((Number(match[0]) * 100) / 4095);
 
   useEffect(() => {
     const client = mqtt.connect(`ws://${HOST}:8083/mqtt`);
@@ -46,35 +39,14 @@ const Din1 = () => {
 
     // Manejo de mensajes recibidos
     client.on("message", (topic, message) => {
-      dispatch(editDin1(message.toString()));
       console.log(
         `Mensaje recibido en el tema ${topic}: ${message.toString()}`
       );
+      const match = message.toString().match(/\d+/);
+      match[0] === "1" ? dispatch(editDin1(true)) : dispatch(editDin1(false));
     });
   }, []); // El segundo parámetro [] asegura que este efecto se ejecute solo una vez al montar el componente
 
-  // return (
-  //   <div className={style.container}>
-  //     <h2> din1</h2>
-  //     {`value : ${match}`}
-  //     <div className={style.fondoBarra}>
-  //       <div
-  //         className={style.barra}
-  //         style={{
-  //           width: `${porcentaje}%`,
-  //           backgroundColor: `${
-  //             porcentaje > 25 && porcentaje < 75
-  //               ? "rgb(255,255,84)"
-  //               : porcentaje > 75
-  //               ? "rgb(219,51,51)"
-  //               : "rgb(46,104,46)"
-  //           }`,
-  //         }}
-  //       ></div>
-  //     </div>
-  //     <h1>{porcentaje}%</h1> 
-  //   </div>
-  // );
   return (
     <div className={style.container}>
       <header className={style.titulo}>
@@ -86,26 +58,34 @@ const Din1 = () => {
           <img src="../../public/gear-solid.svg" alt="" />
         </button>
       </header>
-      {/* {`value : ${match}`} */}
-      <section className={style.porcentaje}>
-        <h1 className={style.porc}>{porcentaje}%</h1>
-      </section>
-      <div className={style.fondoBarra}>
+      <h1
+        style={{
+          color: `${din1 ? "rgb(46,104,46)" : "rgb(219,51,51)"}`,
+          transition: "ease-in-out 0.3s",
+        }}
+      >
+        {" "}
+        {din1 ? "Prendido" : "Apagado"}
+      </h1>
+      <section className={style.luces}>
         <div
-          className={style.barra}
+          className={style.apagado}
           style={{
-            width: `${porcentaje}%`,
-            backgroundColor: `${
-              porcentaje > 25 && porcentaje < 75
-                ? "rgb(255,255,84)"
-                : porcentaje > 75
-                ? "rgb(219,51,51)"
-                : "rgb(46,104,46)"
+            backgroundColor: `${din1 ? "rgb(219,51,51)" : "red"}`,
+            filter: `${din1 ? "none" : "drop-shadow(0px 0px 5px red)"}`,
+          }}
+        ></div>
+        <div
+          className={style.prendido}
+          style={{
+            backgroundColor: `${din1 ? "rgb(34, 163, 34)" : "rgb(46,104,46)"}`,
+            filter: `${
+              din1 ? "drop-shadow(0px 0px 5px rgb(46,104,46))" : "none"
             }`,
           }}
         ></div>
-      </div>
-      <section className={style.variacion}></section>
+      </section>
+
       <div
         className={style.inputDiv}
         style={{ display: `${configName ? "flex" : "none"}` }}

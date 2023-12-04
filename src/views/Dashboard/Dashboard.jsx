@@ -10,19 +10,24 @@ import Out0 from "../../Components/Out0/Out0";
 import Out1 from "../../Components/Out1/Out1";
 import Out2 from "../../Components/Out2/Out2";
 import Out3 from "../../Components/Out3/Out3";
+
 import "./Dashboard.css";
 
 const Dashboard = () => {
   return (
     <div className="container">
-      <div className="parte"><Din0/></div>
-      <div className="parte"><Din1/></div>
-      <div className="parte"><Din2/></div>
-      <div className="parte"><Din3/></div>
+      <div className=""></div>
+      <div className=""></div>
+      <div className=""></div>
+      <div className=""></div>
       <div className="parte"><Ain0/></div>
       <div className="parte"><Ain1/></div>
       <div className="parte"><Ain2/></div>
       <div className="parte"><Ain3/></div>
+      <div className="parte"><Din0/></div>
+      <div className="parte"><Din1/></div>
+      <div className="parte"><Din2/></div>
+      <div className="parte"><Din3/></div>
       <div className="parte"><Out0/></div>
       <div className="parte"><Out1/></div>
       <div className="parte"><Out2/></div>
