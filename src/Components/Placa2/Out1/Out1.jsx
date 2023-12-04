@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import mqtt from "mqtt";
-import style from "./Out0.module.css";
-// const TOPIC = "Leandro/inLngKM48P/actdata";
-const TOPIC = "64c314be56857449102a9d4b/testid/inLngKM48P/actdata";
+import style from "./Out1.module.css";
 const HOST = "192.168.0.46";
+const TOPIC = "64c314be56857449102a9d4b/testid2/uX0NxQhNrr/actdata";
 
-const Out0 = () => {
+const Out1 = () => {
   const [switcher, setSwitcher] = useState(false);
-  const [name, setName] = useState("out0");
+  const [name, setName] = useState("out1");
   const [configName, setConfigName] = useState(false);
 
   const handlerName = (e) => {
@@ -78,7 +77,6 @@ const Out0 = () => {
           }}
         ></div>
       </section>
-
       <section className={style.switchDiv}>
         <div className={style.switch}>
           <button
@@ -116,4 +114,4 @@ const Out0 = () => {
   );
 };
 
-export default Out0;
+export default Out1;

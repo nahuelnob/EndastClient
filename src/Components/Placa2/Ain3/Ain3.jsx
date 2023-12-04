@@ -2,15 +2,15 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import mqtt from "mqtt";
-import { editAin0 } from "../../Redux/actions";
-import style from "./Ain0.module.css";
-const TOPIC = "64c314be56857449102a9d4b/testid/NrFMgh03GO/sdata";
+import { editAin3 } from "../../../Redux/actions";;
+import style from "./Ain3.module.css";
+const TOPIC = "64c314be56857449102a9d4b/testid2/rgzxwhfl36/sdata";
 const HOST = "192.168.0.46";
 
-const Ain0 = () => {
+const Ain3 = () => {
   const dispatch = useDispatch();
-  const ain0 = useSelector((state) => state.ain0);
-  const [name, setName] = useState("ain0");
+  const ain3 = useSelector((state) => state.ain3);
+  const [name, setName] = useState("ain3");
   const [configName, setConfigName] = useState(false);
 
   const handlerName = (e) => {
@@ -20,9 +20,9 @@ const Ain0 = () => {
   const handlerConfigName = () => {
     !configName && setConfigName(true);
     configName && setConfigName(false);
-  };
+  };  
 
-  const porcentaje = Math.round((Number(ain0) * 100) / 4095);
+  const porcentaje = Math.round((Number(ain3) * 100) / 4095);
 
   useEffect(() => {
     const client = mqtt.connect(`ws://${HOST}:8083/mqtt`);
@@ -30,7 +30,7 @@ const Ain0 = () => {
     const post = async (value) => {
       try {
         const { data } = await axios.post(
-          `http://${HOST}:3001/api/ain0`,
+          `http://${HOST}:3001/api/ain3`,
           value
         );
       } catch (error) {
@@ -55,11 +55,9 @@ const Ain0 = () => {
     client.on("message", (topic, message) => {
       const match = message.toString().match(/\d+/);
       if (match) {
-        dispatch(editAin0(match[0]));
+        dispatch(editAin3(match[0]));
         post({ value: match[0] });
-        console.log(
-          `Mensaje recibido en el tema ${topic}: ${message.toString()}`
-        );
+        console.log(`Mensaje recibido en el tema ${topic}: ${message.toString()}`);
       }
     });
   }, []); // El segundo parámetro [] asegura que este efecto se ejecute solo una vez al montar el componente
@@ -75,7 +73,6 @@ const Ain0 = () => {
           <img src="../../public/gear-solid.svg" alt="" />
         </button>
       </header>
-      {`value : ${ain0}`}
       <div className={style.main}>
         <section className={style.porcentaje}>
           <h1 className={style.porc}>{porcentaje}%</h1>
@@ -121,4 +118,4 @@ const Ain0 = () => {
   );
 };
 
-export default Ain0;
+export default Ain3;

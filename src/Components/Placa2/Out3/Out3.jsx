@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import mqtt from "mqtt";
-import style from "./Out0.module.css";
-// const TOPIC = "Leandro/inLngKM48P/actdata";
-const TOPIC = "64c314be56857449102a9d4b/testid/inLngKM48P/actdata";
+import style from "./Out3.module.css";
+const TOPIC = "64c314be56857449102a9d4b/testid2/1QMLeg5CT4/actdata";
 const HOST = "192.168.0.46";
 
-const Out0 = () => {
+const Out3 = () => {
   const [switcher, setSwitcher] = useState(false);
   const [name, setName] = useState("out0");
   const [configName, setConfigName] = useState(false);
@@ -116,4 +115,4 @@ const Out0 = () => {
   );
 };
 
-export default Out0;
+export default Out3;

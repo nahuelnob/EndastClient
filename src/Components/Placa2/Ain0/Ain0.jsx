@@ -2,9 +2,9 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import mqtt from "mqtt";
-import { editAin0 } from "../../Redux/actions";
+import { editAin0 } from "../../../Redux/actions";
 import style from "./Ain0.module.css";
-const TOPIC = "64c314be56857449102a9d4b/testid/NrFMgh03GO/sdata";
+const TOPIC = "64c314be56857449102a9d4b/testid2/NrFMgh03GO/sdata";
 const HOST = "192.168.0.46";
 
 const Ain0 = () => {

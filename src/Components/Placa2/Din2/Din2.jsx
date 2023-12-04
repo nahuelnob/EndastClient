@@ -1,16 +1,16 @@
 import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
+import { editDin2 } from "../../../Redux/actions";
 import React, { useEffect, useState } from "react";
 import mqtt from "mqtt";
-import { editAin0 } from "../../Redux/actions";
-import style from "./Ain0.module.css";
-const TOPIC = "64c314be56857449102a9d4b/testid/NrFMgh03GO/sdata";
+import style from "./Din2.module.css";
+const TOPIC = "64c314be56857449102a9d4b/testid2/DpG13PisLO/sdata";
 const HOST = "192.168.0.46";
 
-const Ain0 = () => {
+const Din2 = () => {
   const dispatch = useDispatch();
-  const ain0 = useSelector((state) => state.ain0);
-  const [name, setName] = useState("ain0");
+  const din2 = useSelector((state) => state.din2);
+
+  const [name, setName] = useState("din2");
   const [configName, setConfigName] = useState(false);
 
   const handlerName = (e) => {
@@ -22,21 +22,8 @@ const Ain0 = () => {
     configName && setConfigName(false);
   };
 
-  const porcentaje = Math.round((Number(ain0) * 100) / 4095);
-
   useEffect(() => {
     const client = mqtt.connect(`ws://${HOST}:8083/mqtt`);
-
-    const post = async (value) => {
-      try {
-        const { data } = await axios.post(
-          `http://${HOST}:3001/api/ain0`,
-          value
-        );
-      } catch (error) {
-        window.alert(error);
-      }
-    };
 
     client.on("connect", () => {
       // console.log("Conectado al broker MQTT");
@@ -53,14 +40,11 @@ const Ain0 = () => {
 
     // Manejo de mensajes recibidos
     client.on("message", (topic, message) => {
+      console.log(
+        `Mensaje recibido en el tema ${topic}: ${message.toString()}`
+      );
       const match = message.toString().match(/\d+/);
-      if (match) {
-        dispatch(editAin0(match[0]));
-        post({ value: match[0] });
-        console.log(
-          `Mensaje recibido en el tema ${topic}: ${message.toString()}`
-        );
-      }
+      match[0] === "1" ? dispatch(editDin2(true)) : dispatch(editDin2(false));
     });
   }, []); // El segundo parámetro [] asegura que este efecto se ejecute solo una vez al montar el componente
 
@@ -75,28 +59,26 @@ const Ain0 = () => {
           <img src="../../public/gear-solid.svg" alt="" />
         </button>
       </header>
-      {`value : ${ain0}`}
-      <div className={style.main}>
-        <section className={style.porcentaje}>
-          <h1 className={style.porc}>{porcentaje}%</h1>
-        </section>
-        <section className={style.fondoBarra}>
-          <div
-            className={style.barra}
-            style={{
-              width: `${porcentaje}%`,
-              backgroundColor: `${
-                porcentaje > 25 && porcentaje < 75
-                  ? "rgb(255,255,84)"
-                  : porcentaje > 75
-                  ? "rgb(219,51,51)"
-                  : "rgb(46,104,46)"
-              }`,
-            }}
-          ></div>
-        </section>
-        {/* <section className={style.variacion}>Variacion</section> */}
-      </div>
+      <h1 style={{color:`${din2 ? "rgb(46,104,46)" : "rgb(219,51,51)"}`, transition:"ease-in-out 0.3s"}}> {din2 ? "Prendido" : "Apagado"}</h1>
+      <section className={style.luces}>
+        <div
+          className={style.apagado}
+          style={{
+            backgroundColor: `${din2 ? "rgb(219,51,51)" : "red"}`,
+            filter: `${din2 ? "none" : "drop-shadow(0px 0px 5px red)"}`,
+          }}
+        ></div>
+        <div
+          className={style.prendido}
+          style={{
+            backgroundColor: `${din2 ? "rgb(34, 163, 34)" : "rgb(46,104,46)"}`,
+            filter: `${
+              din2 ? "drop-shadow(0px 0px 5px rgb(46,104,46))" : "none"
+            }`,
+          }}
+        ></div>
+      </section>
+
       <div
         className={style.inputDiv}
         style={{ display: `${configName ? "flex" : "none"}` }}
@@ -121,4 +103,4 @@ const Ain0 = () => {
   );
 };
 
-export default Ain0;
+export default Din2;

@@ -7,7 +7,7 @@ body {
   
   background-color: rgb(200,200,200);
   font-family: roboto;
-  overflow: hidden;
+  /* overflow: hidden; */
   width: 100%;
   margin-left: 0;
 }
