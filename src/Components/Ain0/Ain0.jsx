@@ -33,7 +33,6 @@ const Ain0 = () => {
           `http://${HOST}:3001/api/ain0`,
           value
         );
-        console.log("datarda -->", data);
       } catch (error) {
         window.alert(error);
       }

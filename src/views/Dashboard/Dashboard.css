@@ -6,7 +6,7 @@
   grid-template-rows: 0.01fr 0.5fr 0.4fr 0.4fr ;
   column-gap: 1rem;
   row-gap: 1rem;
-  translate: -0.5rem ;
+  /* translate: -0.5rem ; */
   /* justify-content: center; */
   /* align-content: center; */
 }

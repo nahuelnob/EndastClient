@@ -2,8 +2,9 @@
     width: 100%;
     padding-top: 0.1rem;
     padding-bottom: 0.1rem;
-    padding-left: 1rem;
-    translate: -0.5rem ;
+    /* padding-left: 1rem; */
+    /* translate: -0.5rem ; */
     background-color: #303030;
     color: antiquewhite;
+    text-indent: 1.5rem;
 }
