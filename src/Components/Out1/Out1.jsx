@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import mqtt from "mqtt";
 import style from "./Out1.module.css";
 const HOST = "192.168.0.46";
-const TOPIC = "64c314be56857449102a9d4b/testid/uX0NxQhNrr/actdata";
+const TOPIC = "64c314be56857449102a9d4b/testid1/uX0NxQhNrr/actdata";
 
 const Out1 = () => {
   const [switcher, setSwitcher] = useState(false);

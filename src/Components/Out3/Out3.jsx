@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import mqtt from "mqtt";
 import style from "./Out3.module.css";
-const TOPIC = "64c314be56857449102a9d4b/testid/1QMLeg5CT4/actdata";
+const TOPIC = "64c314be56857449102a9d4b/testid1/1QMLeg5CT4/actdata";
 const HOST = "192.168.0.46";
 
 const Out3 = () => {
   const [switcher, setSwitcher] = useState(false);
-  const [name, setName] = useState("out0");
+  const [name, setName] = useState("out3");
   const [configName, setConfigName] = useState(false);
 
   const handlerName = (e) => {
