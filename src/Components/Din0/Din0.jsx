@@ -3,7 +3,7 @@ import { editDin0 } from "../../Redux/actions";
 import React, { useEffect, useState } from "react";
 import mqtt from "mqtt";
 import style from "./Din0.module.css";
-const TOPIC = "64c314be56857449102a9d4b/testid1/aPtCeiVxcp/sdata";
+const TOPIC = "64c314be56857449102a9d4b/testid/aPtCeiVxcp/sdata";
 // const TOPIC = "Leandro/inLngKM48P/actdata";
 const HOST = "192.168.0.46";
 

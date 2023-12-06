@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import mqtt from "mqtt";
 import { editAin1 } from "../../Redux/actions";
 import style from "./Ain1.module.css";
-const TOPIC = "64c314be56857449102a9d4b/testid1/iSK4MVs6tO/sdata";
+const TOPIC = "64c314be56857449102a9d4b/testid/iSK4MVs6tO/sdata";
 const HOST = "192.168.0.46";
 
 const Ain1 = () => {
