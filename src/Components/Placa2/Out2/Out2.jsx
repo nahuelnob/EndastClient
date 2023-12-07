@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import mqtt from "mqtt";
 import style from "./Out2.module.css";
-const TOPIC = "64c314be56857449102a9d4b/testid2/7AJDDkZVrj/actdata";
+const dId = "testid2";
+const TOPIC = `64c314be56857449102a9d4b/${dId}/7AJDDkZVrj/actdata`;
 const HOST = "192.168.0.46";
 
 const Out2 = () => {
   const [switcher, setSwitcher] = useState(false);
-  const [name, setName] = useState("out0");
+  const [name, setName] = useState("out2");
   const [configName, setConfigName] = useState(false);
 
   const handlerName = (e) => {
@@ -109,6 +110,13 @@ const Out2 = () => {
         >
           {" "}
           Cambiar{" "}
+        </button>
+        <button
+          className={style.cerrar}
+          onClick={() => handlerConfigName()}
+        >
+          {" "}
+          x{" "}
         </button>
       </div>
     </div>

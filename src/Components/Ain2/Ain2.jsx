@@ -4,7 +4,8 @@ import React, { useEffect, useState } from "react";
 import mqtt from "mqtt";
 import style from "./Ain2.module.css";
 import { editAin2 } from "../../Redux/actions";
-const TOPIC = "64c314be56857449102a9d4b/testid/AM8p6BX0gm/sdata";
+const dId = 'testid'
+const TOPIC = `64c314be56857449102a9d4b/${dId}/AM8p6BX0gm/sdata`;
 const HOST = "192.168.0.46";
 
 const Ain2 = () => {
@@ -59,7 +60,7 @@ const Ain2 = () => {
       const match = message.toString().match(/\d+/);
       if (match) {
         dispatch(editAin2(match[0]));
-        post({ value: match[0] });
+        post({ value: match[0], porcentaje: porcentaje, placa: dId });
         console.log(`Mensaje recibido en el tema ${topic}: ${message.toString()}`);
       }
     });
@@ -122,4 +123,3 @@ const Ain2 = () => {
 };
 
 export default Ain2;
-HOST

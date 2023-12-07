@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import mqtt from "mqtt";
 import style from "./Out0.module.css";
-const TOPIC = "64c314be56857449102a9d4b/testid2/inLngKM48P/actdata";
+const dId = "testid2";
+const TOPIC = `64c314be56857449102a9d4b/${dId}/inLngKM48P/actdata`;
 const HOST = "192.168.0.46";
 
 const Out0 = () => {
@@ -109,6 +110,13 @@ const Out0 = () => {
         >
           {" "}
           Cambiar{" "}
+        </button>
+        <button
+          className={style.cerrar}
+          onClick={() => handlerConfigName()}
+        >
+          {" "}
+          x{" "}
         </button>
       </div>
     </div>

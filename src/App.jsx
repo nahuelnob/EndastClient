@@ -7,8 +7,8 @@ function App() {
   return (
     <div>
       <Routes>
-        <Route path="/1" element={<PadiV3 />} />
-        <Route path="/2" element={<PadiV3placa2 />} />
+        {/* <Route path="/1" element={<PadiV3 />} /> */}
+        <Route path="/" element={<PadiV3placa2 />} />
       </Routes>
     </div>
   );

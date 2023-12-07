@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import mqtt from "mqtt";
 import { editAin0 } from "../../../Redux/actions";
 import style from "./Ain0.module.css";
-const dId = "testid";
+const dId = "testid2";
 const TOPIC = `64c314be56857449102a9d4b/${dId}/NrFMgh03GO/sdata`;
 const HOST = "192.168.0.46";
 
@@ -78,7 +78,7 @@ const Ain0 = () => {
           <img src="../../public/gear-solid.svg" alt="" />
         </button>
       </header>
-      {`value : ${ain0}`}
+      {/* {`value : ${ain0}`} */}
       <div className={style.main}>
         <section className={style.porcentaje}>
           <h1 className={style.porc}>{porcentaje}%</h1>
@@ -119,6 +119,14 @@ const Ain0 = () => {
           {" "}
           Cambiar{" "}
         </button>
+        <button
+          className={style.cerrar}
+          onClick={() => handlerConfigName()}
+        >
+          {" "}
+          x{" "}
+        </button>
+        
       </div>
     </div>
   );

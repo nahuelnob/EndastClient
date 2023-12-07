@@ -4,7 +4,8 @@ import React, { useEffect, useState } from "react";
 import mqtt from "mqtt";
 import { editAin1 } from "../../Redux/actions";
 import style from "./Ain1.module.css";
-const TOPIC = "64c314be56857449102a9d4b/testid/iSK4MVs6tO/sdata";
+const dId = "testid";
+const TOPIC = `64c314be56857449102a9d4b/${dId}/iSK4MVs6tO/sdata`;
 const HOST = "192.168.0.46";
 
 const Ain1 = () => {
@@ -55,7 +56,7 @@ const Ain1 = () => {
       const match = message.toString().match(/\d+/);
       if (match) {
         dispatch(editAin1(match[0]));
-        post({ value: match[0] });
+        post({ value: match[0], porcentaje: porcentaje, placa: dId });
         console.log(
           `Mensaje recibido en el tema ${topic}: ${message.toString()}`
         );
@@ -114,7 +115,6 @@ const Ain1 = () => {
           {" "}
           Cambiar{" "}
         </button>
-        <button className={style.cerrar} onClick={() => {handlerConfigName()}}>x</button>
       </div>
     </div>
   );

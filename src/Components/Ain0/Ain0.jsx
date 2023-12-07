@@ -4,10 +4,13 @@ import React, { useEffect, useState } from "react";
 import mqtt from "mqtt";
 import { editAin0 } from "../../Redux/actions";
 import style from "./Ain0.module.css";
-const TOPIC = "64c314be56857449102a9d4b/testid/NrFMgh03GO/sdata";
+const dId = "testid";
+const TOPIC = `64c314be56857449102a9d4b/${dId}/NrFMgh03GO/sdata`;
 const HOST = "192.168.0.46";
 
+
 const Ain0 = () => {
+  console.log(TOPIC);
   const dispatch = useDispatch();
   const ain0 = useSelector((state) => state.ain0);
   const [name, setName] = useState("ain0");
@@ -56,7 +59,7 @@ const Ain0 = () => {
       const match = message.toString().match(/\d+/);
       if (match) {
         dispatch(editAin0(match[0]));
-        post({ value: match[0] });
+        post({ value: match[0], porcentaje: porcentaje, placa: dId });
         console.log(
           `Mensaje recibido en el tema ${topic}: ${message.toString()}`
         );
