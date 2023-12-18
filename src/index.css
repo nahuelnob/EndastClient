@@ -5,18 +5,18 @@ body {
     rgb(200, 200, 200)
   ); */
   
+  margin: 0;
   background-color: rgb(200,200,200);
   font-family: roboto;
   /* overflow: hidden; */
-  width: 100%;
-  margin-left: 0;
+  /* width: 100%; */
 }
 
-@media screen and (max-width: 768px) {
+/* @media screen and (max-width: 768px) {
   body {
     overflow: auto;
   }
-}
+} */
 
 /* body::before { */
   /* content: ""; */

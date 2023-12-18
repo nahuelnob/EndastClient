@@ -10,7 +10,7 @@ const PadiV3 = ({topic}) => {
         <Banner />
       </section>
       <section>
-        {/* <NavBar/> */}
+        <NavBar/>
         <Dashboard topic={topic}/>
       </section>
     </div>
