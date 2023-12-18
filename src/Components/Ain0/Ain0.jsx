@@ -5,12 +5,12 @@ import mqtt from "mqtt";
 import { editAin0 } from "../../Redux/actions";
 import style from "./Ain0.module.css";
 const dId = "testid";
-const TOPIC = `64c314be56857449102a9d4b/${dId}/NrFMgh03GO/sdata`;
+// const TOPIC = `64c314be56857449102a9d4b/${dId}/NrFMgh03GO/sdata`;
 const HOST = "192.168.0.46";
 
 
-const Ain0 = () => {
-  console.log(TOPIC);
+const Ain0 = ({topic}) => {
+  const TOPIC = topic;
   const dispatch = useDispatch();
   const ain0 = useSelector((state) => state.ain0);
   const [name, setName] = useState("ain0");
