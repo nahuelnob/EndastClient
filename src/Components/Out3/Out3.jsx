@@ -25,14 +25,9 @@ const Out3 = ({topic}) => {
   const client = mqtt.connect(`ws://${HOST}:8083/mqtt`);
 
   client.on("connect", () => {
-    // console.log("Conectado al broker MQTT");
     // Suscripcion al topico
     client.subscribe(TOPIC, (err) => {
-      if (!err) {
-        // console.log(`Suscrito al tema: ${TOPIC}`);
-      } else {
-        console.log(`Error al suscribirse a:  ${TOPIC}`);
-      }
+      if (err) console.log(`Error al suscribirse a:  ${TOPIC}`);
     });
   });
 

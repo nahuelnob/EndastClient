@@ -43,9 +43,6 @@ const Din2 = ({topic}) => {
 
     // Manejo de mensajes recibidos
     client.on("message", (topic, message) => {
-      console.log(
-        `Mensaje recibido en el tema ${topic}: ${message.toString()}`
-      );
       const match = message.toString().match(/\d+/);
       match[0] === "1" ? dispatch(editDin2(true)) : dispatch(editDin2(false));
     });

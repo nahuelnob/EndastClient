@@ -30,23 +30,14 @@ const Din3 = ({ topic }) => {
     const client = mqtt.connect(`ws://${HOST}:8083/mqtt`);
 
     client.on("connect", () => {
-      // console.log("Conectado al broker MQTT");
-
       // Suscripcion al topico
       client.subscribe(TOPIC, (err) => {
-        if (!err) {
-          // console.log(`Suscrito al tema: ${TOPIC}`);
-        } else {
-          console.log(`Error al suscribirse a: ${TOPIC}`);
-        }
+        if (err) console.log(`Error al suscribirse a: ${TOPIC}`);
       });
     });
 
     // Manejo de mensajes recibidos
     client.on("message", (topic, message) => {
-      console.log(
-        `Mensaje recibido en el tema ${topic}: ${message.toString()}`
-      );
       const match = message.toString().match(/\d+/);
       match[0] === "1" ? dispatch(editDin3(true)) : dispatch(editDin3(false));
     });

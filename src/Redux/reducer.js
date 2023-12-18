@@ -5,7 +5,7 @@ const initialState = {
   din1: false,
   din2: false,
   din3: false,
-  ain0: 1000,
+  ain0: 0,
   ain1: 0,
   ain2: 0,
   ain3: 0,

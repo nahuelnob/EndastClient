@@ -5,9 +5,9 @@ import style from "./Out0.module.css";
 // const TOPIC = `64c314be56857449102a9d4b/${dId}/inLngKM48P/actdata`;
 const HOST = "192.168.0.46";
 
-const Out0 = ({topic}) => {
+const Out0 = ({ topic }) => {
   const TOPIC = `${topic}inLngKM48P/actdata`;
-  const dId = topic.split('/')[1]
+  const dId = topic.split("/")[1];
 
   const [switcher, setSwitcher] = useState(false);
   const [name, setName] = useState("out0");
@@ -25,14 +25,9 @@ const Out0 = ({topic}) => {
   const client = mqtt.connect(`ws://${HOST}:8083/mqtt`);
 
   client.on("connect", () => {
-    // console.log("Conectado al broker MQTT");
     // Suscripcion al topico
     client.subscribe(TOPIC, (err) => {
-      if (!err) {
-        console.log(`Suscrito al tema: ${TOPIC}`);
-      } else {
-        console.log(`Error al suscribirse a:  ${TOPIC}`);
-      }
+      if (err) console.log(`Error al suscribirse a:  ${TOPIC}`);
     });
   });
 

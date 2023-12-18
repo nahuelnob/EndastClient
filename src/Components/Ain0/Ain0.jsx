@@ -8,11 +8,11 @@ import style from "./Ain0.module.css";
 // const TOPIC = `64c314be56857449102a9d4b/${dId}/NrFMgh03GO/sdata`;
 const HOST = "192.168.0.46";
 
-
-const Ain0 = ({topic}) => {
+const Ain0 = ({ topic, client }) => {
+  // const client = client;
   const TOPIC = `${topic}NrFMgh03GO/sdata`;
-  const dId = topic.split('/')[1]
-  
+  const dId = topic.split("/")[1];
+
   const dispatch = useDispatch();
   const ain0 = useSelector((state) => state.ain0);
   const [name, setName] = useState("ain0");
@@ -44,15 +44,8 @@ const Ain0 = ({topic}) => {
     };
 
     client.on("connect", () => {
-      // console.log("Conectado al broker MQTT");
-
-      // Suscripcion al topico
       client.subscribe(TOPIC, (err) => {
-        if (!err) {
-          // console.log(`Suscrito al tema: ${TOPIC}`);
-        } else {
-          console.log(`Error al suscribirse a: ${TOPIC}`);
-        }
+        if (err) console.log(`Error al suscribirse a: ${TOPIC}`);
       });
     });
 
@@ -60,11 +53,12 @@ const Ain0 = ({topic}) => {
     client.on("message", (topic, message) => {
       const match = message.toString().match(/\d+/);
       if (match) {
+        let porcent = Math.round((Number(match[0]) * 100) / 4095);
         dispatch(editAin0(match[0]));
-        post({ value: match[0], porcentaje: porcentaje, placa: dId });
-        console.log(
-          `Mensaje recibido en el tema ${topic}: ${message.toString()}`
-        );
+        post({ value: match[0], porcentaje: porcent, placa: dId });
+        // console.log(
+        //   `Mensaje recibido en el tema ${topic}: ${message.toString()}`
+        // );
       }
     });
   }, []); // El segundo parámetro [] asegura que este efecto se ejecute solo una vez al montar el componente

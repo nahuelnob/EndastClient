@@ -8,9 +8,9 @@ import style from "./Ain3.module.css";
 // const TOPIC = `64c314be56857449102a9d4b/${dId}/rgzxwhfl36/sdata`;
 const HOST = "192.168.0.46";
 
-const Ain3 = ({topic}) => {
+const Ain3 = ({ topic, client }) => {
   const TOPIC = `${topic}rgzxwhfl36/sdata`;
-  const dId = topic.split('/')[1]
+  const dId = topic.split("/")[1];
 
   const dispatch = useDispatch();
   const ain3 = useSelector((state) => state.ain3);
@@ -24,7 +24,7 @@ const Ain3 = ({topic}) => {
   const handlerConfigName = () => {
     !configName && setConfigName(true);
     configName && setConfigName(false);
-  };  
+  };
 
   const porcentaje = Math.round((Number(ain3) * 100) / 4095);
 
@@ -47,11 +47,7 @@ const Ain3 = ({topic}) => {
 
       // Suscripcion al topico
       client.subscribe(TOPIC, (err) => {
-        if (!err) {
-          // console.log(`Suscrito al tema: ${TOPIC}`);
-        } else {
-          console.log(`Error al suscribirse a: ${TOPIC}`);
-        }
+        if (err) console.log(`Error al suscribirse a: ${TOPIC}`);
       });
     });
 
@@ -59,9 +55,9 @@ const Ain3 = ({topic}) => {
     client.on("message", (topic, message) => {
       const match = message.toString().match(/\d+/);
       if (match) {
+        let porcent = Math.round((Number(match[0]) * 100) / 4095);
         dispatch(editAin3(match[0]));
-        post({ value: match[0], porcentaje: porcentaje, placa: dId });
-        console.log(`Mensaje recibido en el tema ${topic}: ${message.toString()}`);
+        post({ value: match[0], porcentaje: porcent, placa: dId });
       }
     });
   }, []); // El segundo parámetro [] asegura que este efecto se ejecute solo una vez al montar el componente

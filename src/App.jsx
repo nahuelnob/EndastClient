@@ -25,7 +25,7 @@ function App() {
     const placas = async () => {
       try {
         const { data } = await axios(
-          "http://localhost:3001/api/getdevicecredentials"
+          "http://192.168.0.46:3001/api/getdevicecredentials"
         );
         setPlaca(data);
       } catch (error) {
@@ -35,7 +35,7 @@ function App() {
 
     placas();
   }, []);
-
+console.log(placa);
   return (
     <div>
       <Routes>

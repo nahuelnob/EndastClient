@@ -7,10 +7,10 @@ import style from "./Din0.module.css";
 // const TOPIC = `64c314be56857449102a9d4b/${dId}/aPtCeiVxcp/sdata`;
 const HOST = "192.168.0.46";
 
-const Din0 = ({topic}) => {
+const Din0 = ({ topic }) => {
   const TOPIC = `${topic}aPtCeiVxcp/sdata`;
-  const dId = topic.split('/')[1]
-  
+  const dId = topic.split("/")[1];
+
   const din0 = useSelector((state) => state.din0);
   const dispatch = useDispatch();
   const [name, setName] = useState("din0");
@@ -29,23 +29,13 @@ const Din0 = ({topic}) => {
     const client = mqtt.connect(`ws://${HOST}:8083/mqtt`);
 
     client.on("connect", () => {
-      // console.log("Conectado al broker MQTT");
-
-      // Suscripcion al topico
       client.subscribe(TOPIC, (err) => {
-        if (!err) {
-          // console.log(`Suscrito al tema: ${TOPIC}`);
-        } else {
-          console.log(`Error al suscribirse a: ${TOPIC}`);
-        }
+        if (err) console.log(`Error al suscribirse a: ${TOPIC}`);
       });
     });
 
     // Manejo de mensajes recibidos
     client.on("message", (topic, message) => {
-      console.log(
-        `Mensaje recibido en el tema ${topic}: ${message.toString()}`
-      );
       const match = message.toString().match(/\d+/);
       match[0] === "1" ? dispatch(editDin0(true)) : dispatch(editDin0(false));
     });
@@ -62,7 +52,15 @@ const Din0 = ({topic}) => {
           <img src="../../public/gear-solid.svg" alt="" />
         </button>
       </header>
-      <h1 style={{color:`${din0 ? "rgb(46,104,46)" : "rgb(219,51,51)"}`, transition:"ease-in-out 0.3s"}}> {din0 ? "Prendido" : "Apagado"}</h1>
+      <h1
+        style={{
+          color: `${din0 ? "rgb(46,104,46)" : "rgb(219,51,51)"}`,
+          transition: "ease-in-out 0.3s",
+        }}
+      >
+        {" "}
+        {din0 ? "Prendido" : "Apagado"}
+      </h1>
       <section className={style.luces}>
         <div
           className={style.apagado}

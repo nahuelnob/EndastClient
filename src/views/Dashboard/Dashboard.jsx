@@ -13,25 +13,49 @@ import Out3 from "../../Components/Out3/Out3";
 
 import "./Dashboard.css";
 
-const Dashboard = ({topic}) => {
+const Dashboard = ({ topic }) => {
   return (
     <div className="container">
       <div className=""></div>
       <div className=""></div>
       <div className=""></div>
       <div className=""></div>
-      <div className="parte"><Ain0 topic={topic}/></div>
-      <div className="parte"><Ain1 topic={topic}/></div>
-      <div className="parte"><Ain2 topic={topic}/></div>
-      <div className="parte"><Ain3 topic={topic}/></div>
-      <div className="parte"><Din0 topic={topic}/></div>
-      <div className="parte"><Din1 topic={topic}/></div>
-      <div className="parte"><Din2 topic={topic}/></div>
-      <div className="parte"><Din3 topic={topic}/></div>
-      <div className="parte"><Out0 topic={topic}/></div>
-      <div className="parte"><Out1 topic={topic}/></div>
-      <div className="parte"><Out2 topic={topic}/></div>
-      <div className="parte"><Out3 topic={topic}/></div>
+      <div className="parte">
+        <Ain0 topic={topic} />
+      </div>
+      <div className="parte">
+        <Ain1 topic={topic} />
+      </div>
+      <div className="parte">
+        <Ain2 topic={topic} />
+      </div>
+      <div className="parte">
+        <Ain3 topic={topic} />
+      </div>
+      <div className="parte">
+        <Din0 topic={topic} />
+      </div>
+      <div className="parte">
+        <Din1 topic={topic} />
+      </div>
+      <div className="parte">
+        <Din2 topic={topic} />
+      </div>
+      <div className="parte">
+        <Din3 topic={topic} />
+      </div>
+      <div className="parte">
+        <Out0 topic={topic} />
+      </div>
+      <div className="parte">
+        <Out1 topic={topic} />
+      </div>
+      <div className="parte">
+        <Out2 topic={topic} />
+      </div>
+      <div className="parte">
+        <Out3 topic={topic} />
+      </div>
     </div>
   );
 };
