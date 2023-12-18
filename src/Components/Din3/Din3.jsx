@@ -3,11 +3,14 @@ import { editDin3 } from "../../Redux/actions";
 import React, { useEffect, useState } from "react";
 import mqtt from "mqtt";
 import style from "./Din3.module.css";
-const dId = "testid";
-const TOPIC = `64c314be56857449102a9d4b/${dId}/9UaEQR4I36/sdata`;
+// const dId = "testid";
+// const TOPIC = `64c314be56857449102a9d4b/${dId}/9UaEQR4I36/sdata`;
 const HOST = "192.168.0.46";
 
-const Din3 = () => {
+const Din3 = ({ topic }) => {
+  const TOPIC = `${topic}9UaEQR4I36/sdata`;
+  const dId = topic.split("/")[1];
+
   const dispatch = useDispatch();
   const din3 = useSelector((state) => state.din3);
 
@@ -60,7 +63,15 @@ const Din3 = () => {
           <img src="../../public/gear-solid.svg" alt="" />
         </button>
       </header>
-        <h1 style={{color:`${din3 ? "rgb(46,104,46)" : "rgb(219,51,51)"}`, transition:"ease-in-out 0.3s"}}> {din3 ? "Prendido" : "Apagado"}</h1>
+      <h1
+        style={{
+          color: `${din3 ? "rgb(46,104,46)" : "rgb(219,51,51)"}`,
+          transition: "ease-in-out 0.3s",
+        }}
+      >
+        {" "}
+        {din3 ? "Prendido" : "Apagado"}
+      </h1>
       <section className={style.luces}>
         <div
           className={style.apagado}

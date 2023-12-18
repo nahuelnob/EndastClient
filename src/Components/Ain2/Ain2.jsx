@@ -4,11 +4,13 @@ import React, { useEffect, useState } from "react";
 import mqtt from "mqtt";
 import style from "./Ain2.module.css";
 import { editAin2 } from "../../Redux/actions";
-const dId = 'testid'
-const TOPIC = `64c314be56857449102a9d4b/${dId}/AM8p6BX0gm/sdata`;
+// const dId = 'testid'
+// const TOPIC = `64c314be56857449102a9d4b/${dId}/AM8p6BX0gm/sdata`;
 const HOST = "192.168.0.46";
 
-const Ain2 = () => {
+const Ain2 = ({topic}) => {
+  const TOPIC = `${topic}AM8p6BX0gm/sdata`;
+  const dId = topic.split('/')[1]
   const dispatch = useDispatch();
   const ain2 = useSelector((state) => state.ain2);
 

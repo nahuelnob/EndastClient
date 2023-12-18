@@ -3,11 +3,14 @@ import { editDin0 } from "../../Redux/actions";
 import React, { useEffect, useState } from "react";
 import mqtt from "mqtt";
 import style from "./Din0.module.css";
-const dId = "testid";
-const TOPIC = `64c314be56857449102a9d4b/${dId}/aPtCeiVxcp/sdata`;
+// const dId = "testid";
+// const TOPIC = `64c314be56857449102a9d4b/${dId}/aPtCeiVxcp/sdata`;
 const HOST = "192.168.0.46";
 
-const Din0 = () => {
+const Din0 = ({topic}) => {
+  const TOPIC = `${topic}aPtCeiVxcp/sdata`;
+  const dId = topic.split('/')[1]
+  
   const din0 = useSelector((state) => state.din0);
   const dispatch = useDispatch();
   const [name, setName] = useState("din0");

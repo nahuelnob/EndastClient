@@ -4,11 +4,14 @@ import React, { useEffect, useState } from "react";
 import mqtt from "mqtt";
 import { editAin3 } from "../../Redux/actions";
 import style from "./Ain3.module.css";
-const dId = "testid"
-const TOPIC = `64c314be56857449102a9d4b/${dId}/rgzxwhfl36/sdata`;
+// const dId = "testid"
+// const TOPIC = `64c314be56857449102a9d4b/${dId}/rgzxwhfl36/sdata`;
 const HOST = "192.168.0.46";
 
-const Ain3 = () => {
+const Ain3 = ({topic}) => {
+  const TOPIC = `${topic}rgzxwhfl36/sdata`;
+  const dId = topic.split('/')[1]
+
   const dispatch = useDispatch();
   const ain3 = useSelector((state) => state.ain3);
   const [name, setName] = useState("ain3");
