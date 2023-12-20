@@ -4,6 +4,8 @@ import { Route, Routes } from "react-router";
 import PadiV3placa2 from "./views/PadiV3/PadiV3placa2";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Landing from "./Components/Landing/Landing";
+import { useSelector } from "react-redux";
 
 // function App() {
 //   return (
@@ -19,34 +21,33 @@ import axios from "axios";
 //* Nueva funcion App
 
 function App() {
-  const [placa, setPlaca] = useState(null);
+  const placas = useSelector((state) => state.placas)
+  console.log(placas);
+  // const [placa, setPlaca] = useState(null);
 
-  useEffect(() => {
-    const placas = async () => {
-      try {
-        const { data } = await axios(
-          "http://192.168.0.46:3001/api/getdevicecredentials"
-        );
-        setPlaca(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
+  // useEffect(() => {
+  //   const placas = async () => {
+  //     try {
+  //       const { data } = await axios(
+  //         "http://192.168.0.46:3001/api/getdevicecredentials"
+  //       );
+  //       setPlaca(data);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
 
-    placas();
-  }, []);
-console.log(placa);
+  //   placas();
+  // }, []);
   return (
     <div>
       <Routes>
-        {placa &&
-          placa.map((pl) => {
+        <Route path="/" element={<Landing />} />;
+        {placas &&
+          placas.map((pl) => {
             const { dId, topic } = pl;
             return (
-              <Route
-                path={`/${dId}`}
-                element={<PadiV3 topic={topic} />}
-              />
+              <Route path={`/${dId}`} element={<PadiV3 topic={topic} />} />
             );
           })}
       </Routes>
