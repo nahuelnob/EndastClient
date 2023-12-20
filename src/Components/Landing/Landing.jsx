@@ -23,6 +23,8 @@ const Landing = () => {
   };
 
   const handlerAccess = (user, pass) => {
+    user !== usuario && window.alert("Usuario incorrecto");
+    pass !== password && window.alert("Contraseña incorrecta");
     user === usuario &&
       pass === password &&
       dispatch(addPlacas()) &&
