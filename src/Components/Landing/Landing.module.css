@@ -64,8 +64,8 @@
 }
 .input {
   width: 50%;
-  height: 25%;
-  border-radius: 0.3rem 0.3rem 0.3rem 0.3rem;
+  height: 35%;
+  border-radius: 0.2rem 0.2rem 0.2rem 0.2rem;
   margin: 1rem;
   border: none;
   outline: none;
@@ -80,7 +80,7 @@
 }
 
 .boton {
-  width: 40%;
+  width: 50%;
   height: 35%;
   color: #202020;
   /* padding: 0.5rem 2rem 0.5rem 2rem; */
@@ -89,10 +89,12 @@
   background-color: #63dcec;
   filter: drop-shadow(0px 2px 3px #90909050);
   cursor: pointer;
+  font-size: large;
 }
 .boton:hover {
   background-color: #1e6d77;
   filter: drop-shadow(0px 3px 3px #90909090);
+  color: #f0ecec;
 }
 
 .section {
@@ -106,7 +108,7 @@
 }
 .etiqueta {
   position: absolute;
-  top: 0;
+  top: -0.5rem;
   left: 25%;
 }
 .popup {

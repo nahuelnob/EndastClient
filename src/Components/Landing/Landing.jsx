@@ -9,7 +9,6 @@ const Landing = () => {
   const placas = useSelector((state) => state.placas);
   const navigate = useNavigate();
   const [access, setAccess] = useState(false);
-  console.log(access);
   const [userData, setUserdata] = useState({
     usuario: "",
     password: "",
