@@ -1,6 +1,8 @@
 import style from "./NavBar.module.css";
 import { NavLink } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 const NavBar = () => {
+  const placas = useSelector((state) => state.placas);
   return (
     <nav className={style.container}>
       <section>
@@ -8,12 +10,19 @@ const NavBar = () => {
         <h3>Padi v3</h3>
       </section>
       <section>
-        <NavLink to="/testid">
-          <button className={style.link}>testid</button>
-        </NavLink>
-        <NavLink to="/testid2">
-          <button className={style.link}>testid2</button>
-        </NavLink>
+        {placas.map((pl, index) => {
+          const { dId, topic } = pl;
+          return (
+            <NavLink
+              to={`/${dId}`}
+              style={{ textDecoration: "none", color: "white" }}
+            >
+              <div className={style.placas}>
+                <button className={style.link}>{dId}</button>
+              </div>
+            </NavLink>
+          );
+        })}
       </section>
     </nav>
   );
