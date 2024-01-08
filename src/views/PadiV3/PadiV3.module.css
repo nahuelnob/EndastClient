@@ -5,7 +5,11 @@
     /* justify-items: center; */
 }
 
-/* .Banner{
+.NavBar{
     background-color: aqua;
     width: 100%;
-} */
+}
+.Dashboard{
+    background-color: blue;
+    width: 100%;
+}

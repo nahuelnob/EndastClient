@@ -11,16 +11,16 @@ import Out1 from "../../Components/Out1/Out1";
 import Out2 from "../../Components/Out2/Out2";
 import Out3 from "../../Components/Out3/Out3";
 
-import "./Dashboard.css";
+import style from "./Dashboard.module.css";
 
 const Dashboard = ({ topic }) => {
   return (
-    <div className="container">
+    <div className={style.container}>
       <div className=""></div>
       <div className=""></div>
       <div className=""></div>
       <div className=""></div>
-      <div className="parte">
+      <div className={style.parte}>
         <Ain0 topic={topic} />
       </div>
       <div className="parte">
