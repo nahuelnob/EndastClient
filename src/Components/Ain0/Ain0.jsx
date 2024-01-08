@@ -74,7 +74,6 @@ const Ain0 = ({ topic, client }) => {
           <img src="../../public/gear-solid.svg" alt="" />
         </button>
       </header>
-      {`value : ${ain0}`}
       <div className={style.main}>
         <section className={style.porcentaje}>
           <h1 className={style.porc}>{porcentaje}%</h1>

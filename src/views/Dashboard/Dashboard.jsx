@@ -16,46 +16,24 @@ import style from "./Dashboard.module.css";
 const Dashboard = ({ topic }) => {
   return (
     <div className={style.container}>
-      <div className=""></div>
-      <div className=""></div>
-      <div className=""></div>
-      <div className=""></div>
-      <div className={style.parte}>
+      <section className={style.Ain}>
         <Ain0 topic={topic} />
-      </div>
-      <div className="parte">
         <Ain1 topic={topic} />
-      </div>
-      <div className="parte">
         <Ain2 topic={topic} />
-      </div>
-      <div className="parte">
         <Ain3 topic={topic} />
-      </div>
-      <div className="parte">
+      </section>
+      <section className={style.Din}>
         <Din0 topic={topic} />
-      </div>
-      <div className="parte">
         <Din1 topic={topic} />
-      </div>
-      <div className="parte">
         <Din2 topic={topic} />
-      </div>
-      <div className="parte">
         <Din3 topic={topic} />
-      </div>
-      <div className="parte">
+      </section>
+      <section className={style.Out}>
         <Out0 topic={topic} />
-      </div>
-      <div className="parte">
         <Out1 topic={topic} />
-      </div>
-      <div className="parte">
         <Out2 topic={topic} />
-      </div>
-      <div className="parte">
         <Out3 topic={topic} />
-      </div>
+      </section>
     </div>
   );
 };
