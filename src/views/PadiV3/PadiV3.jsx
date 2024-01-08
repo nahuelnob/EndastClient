@@ -7,7 +7,7 @@ const PadiV3 = ({topic}) => {
   return (
     <div className={style.container}>
       <section className={style.Banner}>
-        <Banner />
+        {/* <Banner /> */}
       </section>
       <section>
         <NavBar/>
