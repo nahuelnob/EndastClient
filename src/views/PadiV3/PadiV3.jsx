@@ -6,9 +6,9 @@ import style from './PadiV3.module.css'
 const PadiV3 = ({topic}) => {
   return (
     <div className={style.container}>
-      <section className={style.Banner}>
-        {/* <Banner /> */}
-      </section>
+      {/* <section className={style.Banner}>
+        <Banner />
+      </section> */}
       <section>
         <NavBar/>
         <Dashboard topic={topic}/>
