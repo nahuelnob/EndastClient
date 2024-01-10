@@ -28,6 +28,13 @@ const Ain1 = ({ topic }) => {
 
   const porcentaje = Math.round((Number(ain1) * 100) / 4095);
 
+    /////////////////////////////////////////////////////////////////
+    const strokeWidth = 20;
+    const radius = 65 - strokeWidth / 2;
+    const circumference = 2 * Math.PI * radius;
+    const offset = circumference - (porcentaje / 100) * circumference;
+    /////////////////////////////////////////////////////////////////
+
   useEffect(() => {
     const client = mqtt.connect(`ws://${HOST}:8083/mqtt`);
     const post = async (value) => {
@@ -63,8 +70,7 @@ const Ain1 = ({ topic }) => {
 
   return (
     <div className={style.container}>
-      <header className={style.titulo}>
-        <p style={{ marginLeft: "1rem" }}> {name}</p>
+      <header className={style.header}>
         <button
           className={style.buttonConfig}
           onClick={() => handlerConfigName()}
@@ -72,27 +78,41 @@ const Ain1 = ({ topic }) => {
           <img src="../../public/gear-solid.svg" alt="" />
         </button>
       </header>
-      <div className={style.main}>
-        <section className={style.porcentaje}>
-          <h1 className={style.porc}>{porcentaje}%</h1>
-        </section>
-        <section className={style.fondoBarra}>
-          <div
-            className={style.barra}
-            style={{
-              width: `${porcentaje}%`,
-              backgroundColor: `${
-                porcentaje > 25 && porcentaje < 75
+      <main className={style.main}>
+        <section className={style.radial}>
+          <svg className={style.radialprogress}>
+            <circle
+              className={style.radialprogressbackground}
+              cx="150"
+              cy="75"
+              r={radius}
+              strokeWidth={strokeWidth}
+            />
+            <circle
+              className={style.radialprogressbar}
+              cx="150"
+              cy="75"
+              r={radius}
+              strokeWidth={strokeWidth}
+
+              style={{
+                strokeDasharray: `${circumference} ${circumference}`, strokeDashoffset: offset, stroke: `${porcentaje > 25 && porcentaje < 75
                   ? "rgb(255,255,84)"
                   : porcentaje > 75
-                  ? "rgb(219,51,51)"
-                  : "rgb(46,104,46)"
-              }`,
-            }}
-          ></div>
+                    ? "rgb(219,51,51)"
+                    : "rgb(46,104,46)"
+                  }`
+              }}
+            />
+          </svg>
+          <article className={style.porcentaje}>
+            <h1 className={style.porc}>{porcentaje}%</h1>
+          </article>
         </section>
-        {/* <section className={style.variacion}>Variacion</section> */}
-      </div>
+      </main>
+      <footer className={style.footer}>
+        <h3>{name}</h3>
+      </footer>
       <div
         className={style.inputDiv}
         style={{ display: `${configName ? "flex" : "none"}` }}

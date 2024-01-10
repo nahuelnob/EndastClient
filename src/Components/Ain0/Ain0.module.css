@@ -25,7 +25,6 @@
   align-items: center;
   justify-items: center;
   grid-row: span 4;
-  overflow: hidden;
   align-self: center;
   margin-bottom: 10%;
   .radial {
