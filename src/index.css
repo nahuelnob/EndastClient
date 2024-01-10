@@ -5,12 +5,26 @@ body {
 }
 
 button{
-  font-family: roboto;
+  font-family: militech;
+  font-size: large;
+  
+}
 
+input{
+  font-family: techfont;
 }
 
 @font-face {
   font-family: "roboto"; /* Nombre de la fuente que usarás en tu hoja de estilos */
   src: url("./fonts/Roboto/Roboto-Regular.ttf") format("opentype"); /* Ruta a tu archivo de fuente */
   /* src: url("./font/UniNeue-Trial-Regular.ttf") format("opentype"); Ruta a tu archivo de fuente */
+}
+
+@font-face {
+  font-family: "militech";
+  src: url("./fonts/militech_r_2019-04-13.ttf");
+}
+@font-face {
+  font-family: "techfont";
+  src: url("./fonts/Techfont.ttf");
 }

@@ -7,6 +7,7 @@ const NavBar = () => {
     <nav className={style.container}>
       <section className={style.logo}>
         <img className={style.iso} src="../../public/iso.png" alt="" />
+        
         <h3>Padi v3</h3>
       </section>
       {/* <hr /> */}
