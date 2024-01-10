@@ -6,9 +6,9 @@ import style from './PadiV3.module.css'
 const PadiV3 = ({ topic }) => {
   return (
     <div className={style.container}>
-      {/* <header className={style.Banner}>
+      <header className={style.Banner}>
         <Banner />
-      </header> */}
+      </header>
       <nav className={style.NavBar}>
         <NavBar />
       </nav>

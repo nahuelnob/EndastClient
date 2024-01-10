@@ -16,6 +16,7 @@ import style from "./Dashboard.module.css";
 const Dashboard = ({ topic }) => {
   return (
     <div className={style.container}>
+  
       <section className={style.Ain}>
         <Ain0 topic={topic} />
         <Ain1 topic={topic} />

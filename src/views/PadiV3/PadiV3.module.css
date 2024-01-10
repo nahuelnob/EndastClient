@@ -16,7 +16,8 @@
 }
 .Dashboard {
   width: 98%;
-  height: 95vh;
+  margin-top: 3%;
+  height: 92vh;
   z-index: 0;
   background-color: #e9e8e8;
   /* border: solid 0.2px #ffffff; */
