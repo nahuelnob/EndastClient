@@ -10,8 +10,7 @@ const NavBar = () => {
       </header> */}
       <section className={style.logo}>
         <img className={style.iso} src="../../public/iso.png" alt="" />
-        
-        {/* <h3>Padi</h3> */}
+        <p className={style.padi}>Padi</p>
       </section>
       <section className={style.links}>
         {placas.map((pl, index) => {

@@ -3,14 +3,27 @@
   grid-template-columns: 8% 92%;
   overflow: hidden;
 }
-
+.Banner{
+  position: absolute;
+  width: 100%;
+  /* height: 60vh; */
+  overflow: hidden;
+  z-index: -1;
+}
 .NavBar {
   width: 100%;
   height: 100vh;
 }
 .Dashboard {
-  width: 100%;
-  height: 100vh;
+  width: 98%;
+  height: 95vh;
+  z-index: 0;
+  background-color: #e9e8e8;
+  /* border: solid 0.2px #ffffff; */
+  border-radius: 1rem;
+  overflow: hidden;
+  align-self: center;
+  justify-self: center;
 }
 
 @media screen and (max-width: 425px) {

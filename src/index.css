@@ -1,6 +1,13 @@
 body {
   margin: 0;
-  background-color: rgb(200,200,200);
+  background: linear-gradient(
+    to bottom,
+    #101010,
+    #101010,
+    #303030,
+    #202020,
+    #101010
+  );
   font-family: roboto;
 }
 
