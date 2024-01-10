@@ -47,8 +47,7 @@ const Out0 = ({ topic }) => {
 
   return (
     <div className={style.container}>
-      <header className={style.titulo}>
-        <p style={{ marginLeft: "1rem" }}> {name}</p>
+      <header className={style.header}>
         <button
           className={style.buttonConfig}
           onClick={() => handlerConfigName()}
@@ -56,7 +55,7 @@ const Out0 = ({ topic }) => {
           <img src="../../public/gear-solid.svg" alt="" />
         </button>
       </header>
-      <section className={style.luces}>
+      <main className={style.luces}>
         <div
           className={style.apagado}
           style={{
@@ -75,7 +74,7 @@ const Out0 = ({ topic }) => {
             }`,
           }}
         ></div>
-      </section>
+      </main>
 
       <section className={style.switchDiv}>
         <div className={style.switch}>

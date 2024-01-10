@@ -1,12 +1,24 @@
 .container {
+  width: 95%;
+  height: 95%;
+  border-radius: 1rem;
+  align-self: center;
+  justify-self: center;
+  border: solid 0.1px #90909075;
+  overflow: hidden;
+  position: relative;
+  background: linear-gradient(to right, #d4d4d4, #d4d4d4, #d4d4d4, #b6b6b6);
+  display: grid;
+  grid-template-rows: repeat(7, 1fr);
+}
+.titulo {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  /* height: 100%; */
-  /* background-color: #1b422e; */
-  /* border: solid 1px red; */
+  justify-content: space-between;
+  width: 100%;
+  height: 2rem;
+  font-style: italic;
+  font-weight: bold;
 }
 
 .luces {
@@ -73,15 +85,6 @@
   background-color: #101010;
 }
 
-.titulo {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  height: 2rem;
-  font-style: italic;
-  font-weight: bold;
-}
 .botonCambiar {
   width: 10rem;
   height: 2rem;

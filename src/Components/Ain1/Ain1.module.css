@@ -22,10 +22,10 @@
   /* background-color: #286345; */
 }
 .main {
+  display: flex;
   align-items: center;
-  justify-items: center;
+  justify-content: center;
   grid-row: span 4;
-  align-self: center;
   margin-bottom: 10%;
   .radial {
     position: relative;
