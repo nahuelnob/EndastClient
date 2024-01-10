@@ -100,7 +100,7 @@
 }
 .porcentaje {
   position: absolute;
-  font-size: 2rem;
+  font-size: 1.8rem;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);

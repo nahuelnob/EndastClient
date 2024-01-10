@@ -30,7 +30,7 @@ const Ain0 = ({ topic, client }) => {
 
   const porcentaje = Math.round((Number(ain0) * 100) / 4095);
   /////////////////////////////////////////////////////////////////
-  const strokeWidth = 10;
+  const strokeWidth = 15;
   const radius = 50 - strokeWidth / 2;
   const circumference = 2 * Math.PI * radius;
   const offset = circumference - (porcentaje / 100) * circumference;
