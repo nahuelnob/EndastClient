@@ -3,7 +3,7 @@
   height: 100vh;
   display: grid;
   grid-template-rows: repeat(4, 1fr);
-  background: linear-gradient(to top, #811f1f, #cf2f2f, #811f1f);  
+  /* background: linear-gradient(to top, #811f1f, #cf2f2f, #811f1f);   */
 }
 
 .Ain{

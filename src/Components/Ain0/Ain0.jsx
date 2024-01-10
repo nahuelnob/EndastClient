@@ -9,8 +9,9 @@ import style from "./Ain0.module.css";
 const HOST = "192.168.0.46";
 
 const Ain0 = ({ topic, client }) => {
-  // const client = client;
+
   const TOPIC = `${topic}NrFMgh03GO/sdata`;
+  console.log(TOPIC);
   const dId = topic.split("/")[1];
 
   const dispatch = useDispatch();
@@ -28,6 +29,12 @@ const Ain0 = ({ topic, client }) => {
   };
 
   const porcentaje = Math.round((Number(ain0) * 100) / 4095);
+  /////////////////////////////////////////////////////////////////
+  const strokeWidth = 10;
+  const radius = 50 - strokeWidth / 2;
+  const circumference = 2 * Math.PI * radius;
+  const offset = circumference - (porcentaje / 100) * circumference;
+  /////////////////////////////////////////////////////////////////
 
   useEffect(() => {
     const client = mqtt.connect(`ws://${HOST}:8083/mqtt`);
@@ -75,25 +82,37 @@ const Ain0 = ({ topic, client }) => {
         </button>
       </header>
       <div className={style.main}>
-        <section className={style.porcentaje}>
-          <h1 className={style.porc}>{porcentaje}%</h1>
-        </section>
-        <section className={style.fondoBarra}>
-          <div
-            className={style.barra}
-            style={{
-              width: `${porcentaje}%`,
-              backgroundColor: `${
-                porcentaje > 25 && porcentaje < 75
+        <section className={style.radial}>
+          <svg className={style.radialprogress} height="100" width="100">
+            <circle
+              className={style.radialprogressbackground}
+              cx="50"
+              cy="50"
+              r={radius}
+              strokeWidth={strokeWidth}
+            />
+            <circle
+              className={style.radialprogressbar}
+              cx="50"
+              cy="50"
+              r={radius}
+              strokeWidth={strokeWidth}
+
+              style={{
+                strokeDasharray: `${circumference} ${circumference}`, strokeDashoffset: offset, stroke: `${porcentaje > 25 && porcentaje < 75
                   ? "rgb(255,255,84)"
                   : porcentaje > 75
-                  ? "rgb(219,51,51)"
-                  : "rgb(46,104,46)"
-              }`,
-            }}
-          ></div>
+                    ? "rgb(219,51,51)"
+                    : "rgb(46,104,46)"
+                  }`
+              }}
+            />
+          </svg>
+          <section className={style.porcentaje}>
+            <h1 className={style.porc}>{porcentaje}%</h1>
+          </section>
+
         </section>
-        {/* <section className={style.variacion}>Variacion</section> */}
       </div>
       <div
         className={style.inputDiv}

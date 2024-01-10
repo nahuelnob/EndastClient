@@ -23,18 +23,6 @@
   /* background-color: #286345; */
 }
 
-.porcentaje {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 1rem;
-  height: 3rem;
-  width: 20rem;
-  overflow: hidden;
-  font-size: 2.5rem;
-  /* background-color: aqua; */
-}
-
 .fondoBarra {
   align-self: center;
   width: 10rem;
@@ -106,4 +94,30 @@
   transition: ease-in-out 0.2s;
 }
 
-  
+/* /////////////////////////////// */
+.radial{
+  position: relative;
+}
+.porcentaje {
+  position: absolute;
+  font-size: 2rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.radialprogress {
+  transform: rotate(-180deg);
+}
+
+.radialprogressbackground {
+  fill: none;
+  stroke: #909090;
+}
+
+.radialprogressbar {
+  fill: none;
+  /* stroke: #000000; */
+  transition: stroke-dashoffset 0.3s;
+}
+/* /////////////////////////////// */
