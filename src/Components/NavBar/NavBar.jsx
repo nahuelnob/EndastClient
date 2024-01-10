@@ -5,11 +5,12 @@ const NavBar = () => {
   const placas = useSelector((state) => state.placas);
   return (
     <nav className={style.container}>
-      <section>
+      <section className={style.logo}>
         <img className={style.iso} src="../../public/iso.png" alt="" />
         <h3>Padi v3</h3>
       </section>
-      <section>
+      {/* <hr /> */}
+      <section className={style.links}>
         {placas.map((pl, index) => {
           const { dId, topic } = pl;
           return (
