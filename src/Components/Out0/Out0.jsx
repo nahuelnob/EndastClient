@@ -59,9 +59,9 @@ const Out0 = ({ topic }) => {
         {switcher ?
           <section className={style.encendido}>
             {/* <div className={style.luzVerde}></div> */}
-            {" "}Encendido
+            {" "}{/* Encendido */} |
           </section> :
-          <section className={style.apagado}>{/* <div className={style.luzRoja}></div> */}{" "}Apagado</section>}
+          <section className={style.apagado}>{/* <div className={style.luzRoja}></div> */}{" "}{/* Apagado */} 0</section>}
 
 
 
@@ -87,10 +87,10 @@ const Out0 = ({ topic }) => {
               onClick={handlerSwitch}
               className={style.bola}
               style={{
-                transform: `${switcher ? "translateX(1rem)" : "translateX(-3.5rem)"
-                  }`, background: `${switcher ? "#0cfc0c" : "#fc0c0c"}`, boxShadow: `${switcher ? "inset 0 0 15px #0b570b" : "inset 0 0 15px #680d0d"}`
+                transform: `${switcher ? "translateX(0.5rem)" : "translateX(-3.1rem)"
+                  } translateY(-0.1rem)`, background: `${switcher ? "#0cfc0c" : "#fc0c0c"}`, boxShadow: `${switcher ? "inset 0 0 15px #0b570b" : "inset 0 0 15px #680d0d"}`
               }}
-            >|</button>
+            ></button>
           </div>
         </section>
       </main>
