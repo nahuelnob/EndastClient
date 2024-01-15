@@ -56,32 +56,41 @@ const Out0 = ({ topic }) => {
         </button>
       </header>
       <main className={style.main}>
-        <section
+        {switcher ?
+          <section className={style.encendido}>
+            {/* <div className={style.luzVerde}></div> */}
+            {" "}Encendido
+          </section> :
+          <section className={style.apagado}>{/* <div className={style.luzRoja}></div> */}{" "}Apagado</section>}
+
+
+
+        {/* <section
           className={style.luzRoja}
           style={{
             backgroundColor: `${switcher ? "rgb(219,51,51)" : "red"}`,
             filter: `${switcher ? "none" : "drop-shadow(0px 0px 5px red)"}`,
           }}
-        ></section>
+        >Apagado</section>
         <section
           className={style.luzVerde}
           style={{
-            backgroundColor: `${switcher ? "rgb(34, 163, 34)" : "rgb(46,104,46)"
+            backgroundColor: `${switcher ? "rgb(34, 163, 34)" : "#2e682e"
               }`,
             filter: `${switcher ? "drop-shadow(0px 0px 5px rgb(46,104,46))" : "none"
               }`,
           }}
-        ></section>
+        >Encendido</section> */}
         <section className={style.switchDiv}>
           <div className={style.switch}>
             <button
               onClick={handlerSwitch}
               className={style.bola}
               style={{
-                transform: `${switcher ? "translateX(0rem)" : "translateX(-4rem)"
-                  }`,
+                transform: `${switcher ? "translateX(1rem)" : "translateX(-3.5rem)"
+                  }`, background: `${switcher ? "#0cfc0c" : "#fc0c0c"}`, boxShadow: `${switcher ? "inset 0 0 15px #0b570b" : "inset 0 0 15px #680d0d"}`
               }}
-            ></button>
+            >|</button>
           </div>
         </section>
       </main>
