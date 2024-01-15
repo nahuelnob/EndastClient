@@ -118,3 +118,16 @@
   transform: scale(1.1);
   transition: ease-in-out 0.2s;
 }
+.close{
+  position: absolute;
+  top: 0.5vh;
+  right: 0.5vw;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #d4d4d4;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+.close:hover{
+ filter: brightness(50%);
+}

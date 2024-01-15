@@ -55,40 +55,37 @@ const Out0 = ({ topic }) => {
           <img src="../../public/gear-solid.svg" alt="" />
         </button>
       </header>
-      <main className={style.luces}>
-        <div
-          className={style.apagado}
+      <main className={style.main}>
+        <section
+          className={style.luzRoja}
           style={{
             backgroundColor: `${switcher ? "rgb(219,51,51)" : "red"}`,
             filter: `${switcher ? "none" : "drop-shadow(0px 0px 5px red)"}`,
           }}
-        ></div>
-        <div
-          className={style.prendido}
+        ></section>
+        <section
+          className={style.luzVerde}
           style={{
-            backgroundColor: `${
-              switcher ? "rgb(34, 163, 34)" : "rgb(46,104,46)"
-            }`,
-            filter: `${
-              switcher ? "drop-shadow(0px 0px 5px rgb(46,104,46))" : "none"
-            }`,
+            backgroundColor: `${switcher ? "rgb(34, 163, 34)" : "rgb(46,104,46)"
+              }`,
+            filter: `${switcher ? "drop-shadow(0px 0px 5px rgb(46,104,46))" : "none"
+              }`,
           }}
-        ></div>
+        ></section>
+        <section className={style.switchDiv}>
+          <div className={style.switch}>
+            <button
+              onClick={handlerSwitch}
+              className={style.bola}
+              style={{
+                transform: `${switcher ? "translateX(0rem)" : "translateX(-4rem)"
+                  }`,
+              }}
+            ></button>
+          </div>
+        </section>
       </main>
 
-      <section className={style.switchDiv}>
-        <div className={style.switch}>
-          <button
-            onClick={handlerSwitch}
-            className={style.bola}
-            style={{
-              transform: `${
-                switcher ? "translateX(0rem)" : "translateX(-4rem)"
-              }`,
-            }}
-          ></button>
-        </div>
-      </section>
       <div
         className={style.inputDiv}
         style={{ display: `${configName ? "flex" : "none"}` }}

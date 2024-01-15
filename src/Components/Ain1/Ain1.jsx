@@ -132,6 +132,7 @@ const Ain1 = ({ topic }) => {
           {" "}
           Cambiar{" "}
         </button>
+        <button className={style.close} onClick={() => setConfigName(false)}>x</button>
       </div>
     </div>
   );
