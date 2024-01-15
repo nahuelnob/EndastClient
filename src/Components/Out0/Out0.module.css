@@ -21,11 +21,14 @@
   font-weight: bold;
 }
 .main {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  /* align-items: center; */
+  /* justify-content: center; */
   grid-row: span 4;
   margin-bottom: 10%;
+  
 }
 
 /* .luces {
@@ -54,6 +57,10 @@
 }
 .switchDiv{
   height: 4rem;
+ grid-column: span 2;
+ display: flex;
+ align-items: center;
+ justify-content: center;
 }
 
 .switch {
@@ -92,56 +99,79 @@
   background-color: #101010;
 }
 
-.botonCambiar {
-  width: 10rem;
-  height: 2rem;
-  border-radius: 0.2rem;
-  border: none;
-  margin-top: 1rem;
-  background-color: #286345;
-  filter: drop-shadow(0px 2px 3px black);
-  cursor: pointer;
-  color: antiquewhite;
-}
-.botonCambiar:hover {
-  background-color: #1b422e;
+.footer {
+  grid-row: span 2;
+  font-family: techfont;
+  justify-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: solid 0.1px #909090;
+  width: 80%;
 }
 
-.buttonConfig {
-  margin-right: 1rem;
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
+.inputDiv {
+  position: absolute;
+  background-color: #202020;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #d4d4d4;
 }
-.buttonConfig:hover {
-  transform: scale(1.2);
-  transition: ease-in-out 0.2s;
-}
+
 .input {
   width: 10rem;
   height: 2rem;
   border-radius: 0.2rem;
   border: none;
   text-indent: 0.5rem;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   filter: drop-shadow(0px 2px 3px black);
-  background-color: antiquewhite;
+  background-color: #d4d4d4;
 }
 .input:focus {
   border: none;
   outline: none;
 }
-.inputDiv {
+
+.botonCambiar {
+  width: 10rem;
+  height: 2rem;
+  border-radius: 0.2rem;
+  border: none;
+  margin-top: 1rem;
+  background-color: #63dcec;
+  filter: drop-shadow(0px 2px 3px black) brightness(85%);
+  cursor: pointer;
+}
+.botonCambiar:hover {
+  background-color: #63dcec;
+  filter: drop-shadow(0px 2px 5px black) brightness(95%);
+  cursor: pointer;
+}
+
+.buttonConfig {
+  margin-right: 1%;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+.buttonConfig:hover {
+  transform: scale(1.1);
+  transition: ease-in-out 0.2s;
+}
+.close{
   position: absolute;
-  background-color: #303030f8;
-  width: 100%;
-  height: 100vh;
-  left: 0;
-  right: 0;
-  top: 0;
-  z-index: 1;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  top: 0.5vh;
+  right: 0.5vw;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #d4d4d4;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+.close:hover{
+ filter: brightness(50%);
 }

@@ -85,6 +85,9 @@ const Out0 = ({ topic }) => {
           </div>
         </section>
       </main>
+      <footer className={style.footer}>
+        <h3>{name}</h3>
+      </footer>
 
       <div
         className={style.inputDiv}
@@ -105,6 +108,8 @@ const Out0 = ({ topic }) => {
           {" "}
           Cambiar{" "}
         </button>
+        <button className={style.close} onClick={() => setConfigName(false)}>x</button>
+
       </div>
     </div>
   );
