@@ -32,14 +32,19 @@ const Landing = () => {
 
   return (
     <div className={style.container}>
-      <div className={style.content}>
-        <header className={style.header}>
-          <img className={style.logo} src="/blanco.png" alt="" />
-          <hr className={style.hr} />
+      <main className={style.brand}/>
+
+      <main className={style.main}>
+        <header className={style.logo}>
+          <img className={style.iso} src="/negro.png" alt="" />
+          <div className={style.separador}></div>
+          <h1 className={style.padi}>Padi</h1>
+          <div className={style.hr}></div>
         </header>
-        <main className={style.main}>
-          <section className={style.section}>
-            <p className={style.etiqueta}>Usuario</p>
+
+        <form className={style.form}>
+          {/* <section className={style.section}> */}
+            <p className={style.etiquetaUs}>Usuario</p>
             <input
               className={style.input}
               type="text"
@@ -48,9 +53,9 @@ const Landing = () => {
               value={userData.usuario}
               onChange={handleChange}
             />
-          </section>
-          <section className={style.section}>
-            <p className={style.etiqueta}>Contraseña</p>
+          {/* </section> */}
+          {/* <section className={style.section}> */}
+            <p className={style.etiquetaCon}>Contraseña</p>
             <input
               className={style.input}
               type="password"
@@ -59,19 +64,17 @@ const Landing = () => {
               value={userData.password}
               onChange={handleChange}
             />
-          </section>
-          <section className={style.section}>
-            {/* <NavLink to="/testid2"> */}
+          {/* </section> */}
+          {/* <section className={style.section}> */}
             <button
               className={style.boton}
               onClick={() => handlerAccess(userData.usuario, userData.password)}
             >
               Entrar
             </button>
-            {/* </NavLink> */}
-          </section>
-        </main>
-      </div>
+          {/* </section> */}
+        </form>
+      </main>
       <section className={access && style.popup}>
         {access ? (
           placas.map((pl, index) => {
