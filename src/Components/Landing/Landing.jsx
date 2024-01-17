@@ -37,8 +37,8 @@ const Landing = () => {
       <main className={style.main}>
         <header className={style.logo}>
           <img className={style.iso} src="/negro.png" alt="" />
-          <div className={style.separador}></div>
-          <h1 className={style.padi}>Padi</h1>
+          {/* <div className={style.separador}></div> */}
+          {/* <h1 className={style.padi}>Padi</h1> */}
           <div className={style.hr}></div>
         </header>
 
