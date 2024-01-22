@@ -77,7 +77,8 @@ const Landing = () => {
                 style={{ textDecoration: "none", color: "white" }}
               >
                 <div className={style.placas}>
-                  <img src="/iso.png" alt="" width={"100vh"} />
+                  <img className={style.iso} src="/isoNegro.png" alt="" width={"70vh"} />
+                  <div className={style.hr2}></div>
                   <h1 className={style.link}>{dId}</h1>
                 </div>
               </NavLink>
