@@ -52,43 +52,27 @@ const Out0 = ({ topic }) => {
           className={style.buttonConfig}
           onClick={() => handlerConfigName()}
         >
-          <img src="../../public/gear-solid.svg" alt="" />
+          <img src="gear-solid.svg" alt="" />
         </button>
       </header>
       <main className={style.main}>
         {switcher ?
           <section className={style.encendido}>
-            {/* <div className={style.luzVerde}></div> */}
-            {" "}{/* Encendido */} |
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style={{ border: "solid 2px #63dcec", padding: "5px", marginBottom: "-3vh", borderRadius: "100%", width: "7vh", filter: "drop-shadow(0px 0px 15px #63dcec) saturate(150%)", boxShadow: "0px 0px 10px 0px #63dcec" }}><path d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V256c0 17.7 14.3 32 32 32s32-14.3 32-32V32zM143.5 120.6c13.6-11.3 15.4-31.5 4.1-45.1s-31.5-15.4-45.1-4.1C49.7 115.4 16 181.8 16 256c0 132.5 107.5 240 240 240s240-107.5 240-240c0-74.2-33.8-140.6-86.6-184.6c-13.6-11.3-33.8-9.4-45.1 4.1s-9.4 33.8 4.1 45.1c38.9 32.3 63.5 81 63.5 135.4c0 97.2-78.8 176-176 176s-176-78.8-176-176c0-54.4 24.7-103.1 63.5-135.4z" fill="#63dcec" /></svg>
           </section> :
-          <section className={style.apagado}>{/* <div className={style.luzRoja}></div> */}{" "}{/* Apagado */} 0</section>}
-
-
-
-        {/* <section
-          className={style.luzRoja}
-          style={{
-            backgroundColor: `${switcher ? "rgb(219,51,51)" : "red"}`,
-            filter: `${switcher ? "none" : "drop-shadow(0px 0px 5px red)"}`,
-          }}
-        >Apagado</section>
-        <section
-          className={style.luzVerde}
-          style={{
-            backgroundColor: `${switcher ? "rgb(34, 163, 34)" : "#2e682e"
-              }`,
-            filter: `${switcher ? "drop-shadow(0px 0px 5px rgb(46,104,46))" : "none"
-              }`,
-          }}
-        >Encendido</section> */}
+          <section className={style.apagado}><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style={{ border: "solid 2px #909090", padding: "5px", marginBottom: "-3vh", borderRadius: "100%", width: "7vh", boxShadow: "0px 0px 10px 0px #909090" }}><path d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V256c0 17.7 14.3 32 32 32s32-14.3 32-32V32zM143.5 120.6c13.6-11.3 15.4-31.5 4.1-45.1s-31.5-15.4-45.1-4.1C49.7 115.4 16 181.8 16 256c0 132.5 107.5 240 240 240s240-107.5 240-240c0-74.2-33.8-140.6-86.6-184.6c-13.6-11.3-33.8-9.4-45.1 4.1s-9.4 33.8 4.1 45.1c38.9 32.3 63.5 81 63.5 135.4c0 97.2-78.8 176-176 176s-176-78.8-176-176c0-54.4 24.7-103.1 63.5-135.4z" fill="#909090" /></svg></section>}
         <section className={style.switchDiv}>
-          <div className={style.switch}>
+          <div className={style.switch} style={{
+            background: `${switcher ? "#63dcec" : "#909090"
+              }`,
+            boxShadow: `${switcher ? "inset 0px 0px 10px 0px #1e6d77" : "inset 0px 0px 10px 0px #909090"}`
+          }}>
             <button
               onClick={handlerSwitch}
               className={style.bola}
               style={{
-                transform: `${switcher ? "translateX(0.5rem)" : "translateX(-3.1rem)"
-                  } translateY(-0.1rem)`, background: `${switcher ? "#0cfc0c" : "#fc0c0c"}`, boxShadow: `${switcher ? "inset 0 0 15px #0b570b" : "inset 0 0 15px #680d0d"}`
+                transform: `${switcher ? "translateX(-0.05rem)" : "translateX(-4rem)"
+                  }`
               }}
             ></button>
           </div>
