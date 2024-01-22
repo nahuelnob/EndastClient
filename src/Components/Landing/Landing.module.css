@@ -4,22 +4,18 @@
   display: grid;
   grid-template-columns: 4fr 5fr;
   font-family: techfont;
-  /* background-color: #d4d4d4; */
 }
 .brand {
   height: 100vh;
   background-image: url("/bg-6.avif");
   background-size: cover;
   background-position: -8vw;
-  /* filter: brightness(95%) grayscale(0%) drop-shadow(0vh 2vh 5vh black); */
 }
 .main {
   height: 100vh;
   display: grid;
   grid-template-rows: repeat(4, 1fr);
-  /* background: linear-gradient(to left, #d4d4d4, #d4d4d4, #d4d4d4, #b6b6b6); */
-  background-color: #f0feff
-  /* background: linear-gradient(-65deg, #fcedd3 ); */
+  background-color: #f0feff;
 }
 .logo {
   position: relative;
@@ -29,12 +25,7 @@
   align-items: end;
   justify-content: center;
   object-fit: cover;
-  /* overflow: hidden; */
-  /* .padi {
-    color: #303030;
-    font-size: 8vh;
-    font-weight: 100;
-  } */
+
   .separador {
     position: absolute;
     left: 24.5vw;
@@ -111,10 +102,8 @@
     margin-right: auto;
     width: 45.5vw;
     height: 7vh;
-    /* margin-top: 5vh; */
     color: #202020;
     border-radius: 1vh 1vh 1vh 1vh;
-    /* border: solid 0.5px #1e6d77; */
     border: none;
     background: linear-gradient(to right, #1e6d77, #3fa1ad);
     filter: drop-shadow(0px 2px 3px #90909050);
@@ -123,19 +112,17 @@
     font-size: 3vh;
   }
   .boton:hover {
-    filter: drop-shadow(0px 3px 3px #90909090) brightness(90%);
-    /* color: #f0ecec; */
+    filter: drop-shadow(0px 3px 3px #909090b2) brightness(90%);
   }
 }
 
 .popup {
   position: absolute;
-  width: 100%;
+  width: 55.7vw;
   height: 100vh;
-  /* background-color: #f0feff; */
-  background-color: #000000f6;
+  background-color: #000000f8;
   top: 0;
-  left: 0;
+  right: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -154,17 +141,15 @@
   justify-content: start;
   border-radius: 1vh;
   filter: drop-shadow(0px 2px 3px #90909050);
-
 }
-.iso{
+.iso {
   filter: opacity(80%);
   margin-left: 3vh;
-
 }
-.link{
+.link {
   margin-left: 3vh;
 }
-.hr2{
+.hr2 {
   width: 0.3vh;
   height: 9vh;
   background-color: #3fa1ad;
@@ -176,9 +161,27 @@
   transform: scale(1.1);
   transition: ease-in-out 0.3s;
   filter: drop-shadow(0px 3px 3px #90909090);
-
 }
-.eti{
+.eti {
   display: none;
 }
-
+.noPlacas {
+  height: 100vh;
+  display: grid;
+  place-content: center;
+  color: #f0feff;
+}
+.close {
+  position: absolute;
+  right: 1vh;
+  top: 1vh;
+  border: none;
+  background-color: transparent;
+  color: #f0feff;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  cursor: pointer;
+}
+.close:hover {
+  filter: brightness(50%);
+}
