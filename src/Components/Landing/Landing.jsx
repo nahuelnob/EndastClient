@@ -5,9 +5,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { addPlacas } from "../../Redux/actions";
 
 const Landing = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const placas = useSelector((state) => state.placas);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [access, setAccess] = useState(false);
   const [userData, setUserdata] = useState({
     usuario: "",
@@ -25,7 +25,6 @@ const Landing = () => {
     user !== usuario && window.alert("Usuario incorrecto");
     pass !== password && window.alert("Contraseña incorrecta");
     if (user === usuario && pass === password) {
-      dispatch(addPlacas())
       setAccess(true);
     }
   };
@@ -37,14 +36,11 @@ const Landing = () => {
       <main className={style.main}>
         <header className={style.logo}>
           <img className={style.iso} src="/negro.png" alt="" />
-          {/* <div className={style.separador}></div> */}
-          {/* <h1 className={style.padi}>Padi</h1> */}
           <div className={style.hr}></div>
         </header>
 
-        <form className={style.form}>
-          {/* <section className={style.section}> */}
-          <p className={style.etiquetaUs}>Usuario</p>
+        <section className={style.form}>
+          <p className={!access ? style.etiquetaUs : style.eti}>Usuario</p>
           <input
             className={style.input}
             type="text"
@@ -53,9 +49,7 @@ const Landing = () => {
             value={userData.usuario}
             onChange={handleChange}
           />
-          {/* </section> */}
-          {/* <section className={style.section}> */}
-          <p className={style.etiquetaCon}>Contraseña</p>
+          <p className={!access ? style.etiquetaCon : style.eti}>Contraseña</p>
           <input
             className={style.input}
             type="password"
@@ -64,8 +58,6 @@ const Landing = () => {
             value={userData.password}
             onChange={handleChange}
           />
-          {/* </section> */}
-          {/* <section className={style.section}> */}
           <button
             className={style.boton}
             onClick={() => handlerAccess(userData.usuario, userData.password)}
@@ -73,7 +65,7 @@ const Landing = () => {
             Entrar
           </button>
           {/* </section> */}
-        </form>
+        </section>
       </main>
       <section className={access && style.popup}>
         {access ? (

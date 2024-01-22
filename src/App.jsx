@@ -5,7 +5,8 @@ import PadiV3placa2 from "./views/PadiV3/PadiV3placa2";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Landing from "./Components/Landing/Landing";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { addPlacas } from "./Redux/actions";
 
 // function App() {
 //   return (
@@ -21,9 +22,13 @@ import { useSelector } from "react-redux";
 //* Nueva funcion App
 
 function App() {
+  const dispatch = useDispatch()
   const placas = useSelector((state) => state.placas)
   console.log(placas);
   // const [placa, setPlaca] = useState(null);
+  useEffect(() => {
+    dispatch(addPlacas())
+  },[])
 
   // useEffect(() => {
   //   const placas = async () => {
