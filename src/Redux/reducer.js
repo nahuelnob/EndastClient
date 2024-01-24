@@ -40,6 +40,10 @@ const rootReducer = (state = initialState, { type, payload, dId }) => {
         ain1: ainObject,
         ain2: ainObject,
         ain3: ainObject,
+        din0: ainObject,
+        din1: ainObject,
+        din2: ainObject,
+        din3: ainObject,
       };
     ////////////////////////////////////////////
     case EDIT_DIN0:
