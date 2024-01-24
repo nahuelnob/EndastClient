@@ -4,8 +4,6 @@ import React, { useEffect, useState } from "react";
 import mqtt from "mqtt";
 import style from "./Ain2.module.css";
 import { editAin2 } from "../../Redux/actions";
-// const dId = 'testid'
-// const TOPIC = `64c314be56857449102a9d4b/${dId}/AM8p6BX0gm/sdata`;
 const HOST = "192.168.0.46";
 
 const Ain2 = ({ topic, client }) => {
@@ -26,13 +24,13 @@ const Ain2 = ({ topic, client }) => {
     configName && setConfigName(false);
   };
 
-  const porcentaje = Math.round((Number(ain2) * 100) / 4095);
-    /////////////////////////////////////////////////////////////////
-    const strokeWidth = 20;
-    const radius = 65 - strokeWidth / 2;
-    const circumference = 2 * Math.PI * radius;
-    const offset = circumference - (porcentaje / 100) * circumference;
-    /////////////////////////////////////////////////////////////////
+  const porcentaje = Math.round((Number(ain2[dId]) * 100) / 4095);
+  /////////////////////////////////////////////////////////////////
+  const strokeWidth = 20;
+  const radius = 65 - strokeWidth / 2;
+  const circumference = 2 * Math.PI * radius;
+  const offset = circumference - (porcentaje / 100) * circumference;
+  /////////////////////////////////////////////////////////////////
 
   useEffect(() => {
     const client = mqtt.connect(`ws://${HOST}:8083/mqtt`);
@@ -76,7 +74,7 @@ const Ain2 = ({ topic, client }) => {
           className={style.buttonConfig}
           onClick={() => handlerConfigName()}
         >
-          <img src="../../public/gear-solid.svg" alt="" />
+          <img src="/gear-solid.svg" alt="" />
         </button>
       </header>
       <main className={style.main}>
@@ -133,7 +131,7 @@ const Ain2 = ({ topic, client }) => {
           {" "}
           Cambiar{" "}
         </button>
-                <button className={style.close} onClick={() => setConfigName(false)}>x</button>
+        <button className={style.close} onClick={() => setConfigName(false)}>x</button>
       </div>
     </div>
   );

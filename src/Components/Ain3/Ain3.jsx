@@ -4,8 +4,6 @@ import React, { useEffect, useState } from "react";
 import mqtt from "mqtt";
 import { editAin3 } from "../../Redux/actions";
 import style from "./Ain3.module.css";
-// const dId = "testid"
-// const TOPIC = `64c314be56857449102a9d4b/${dId}/rgzxwhfl36/sdata`;
 const HOST = "192.168.0.46";
 
 const Ain3 = ({ topic, client }) => {
@@ -26,7 +24,7 @@ const Ain3 = ({ topic, client }) => {
     configName && setConfigName(false);
   };
 
-  const porcentaje = Math.round((Number(ain3) * 100) / 4095);
+  const porcentaje = Math.round((Number(ain3[dId]) * 100) / 4095);
     /////////////////////////////////////////////////////////////////
     const strokeWidth = 20;
     const radius = 65 - strokeWidth / 2;
@@ -75,7 +73,7 @@ const Ain3 = ({ topic, client }) => {
           className={style.buttonConfig}
           onClick={() => handlerConfigName()}
         >
-          <img src="../../public/gear-solid.svg" alt="" />
+          <img src="/gear-solid.svg" alt="" />
         </button>
       </header>
       <main className={style.main}>

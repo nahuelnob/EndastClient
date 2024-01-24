@@ -4,8 +4,6 @@ import React, { useEffect, useState } from "react";
 import mqtt from "mqtt";
 import { editAin1 } from "../../Redux/actions";
 import style from "./Ain1.module.css";
-const dId = "testid";
-// const TOPIC = `64c314be56857449102a9d4b/${dId}/iSK4MVs6tO/sdata`;
 const HOST = "192.168.0.46";
 
 const Ain1 = ({ topic }) => {
@@ -26,7 +24,7 @@ const Ain1 = ({ topic }) => {
     configName && setConfigName(false);
   };
 
-  const porcentaje = Math.round((Number(ain1) * 100) / 4095);
+  const porcentaje = Math.round((Number(ain1[dId]) * 100) / 4095);
 
     /////////////////////////////////////////////////////////////////
     const strokeWidth = 20;
@@ -75,7 +73,7 @@ const Ain1 = ({ topic }) => {
           className={style.buttonConfig}
           onClick={() => handlerConfigName()}
         >
-          <img src="../../public/gear-solid.svg" alt="" />
+          <img src="/gear-solid.svg" alt="" />
         </button>
       </header>
       <main className={style.main}>

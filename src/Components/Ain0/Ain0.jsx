@@ -4,8 +4,6 @@ import React, { useEffect, useState } from "react";
 import mqtt from "mqtt";
 import { editAin0 } from "../../Redux/actions";
 import style from "./Ain0.module.css";
-// const dId = "testid";
-// const TOPIC = `64c314be56857449102a9d4b/${dId}/NrFMgh03GO/sdata`;
 const HOST = "192.168.0.46";
 
 const Ain0 = ({ topic, client }) => {
@@ -22,7 +20,6 @@ const Ain0 = ({ topic, client }) => {
     setName(e.target.value);
   };
   
-  console.log(ain0);
   const handlerConfigName = () => {
     !configName && setConfigName(true);
     configName && setConfigName(false);
