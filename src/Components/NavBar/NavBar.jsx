@@ -7,7 +7,7 @@ const NavBar = () => {
   return (
     <nav className={style.container}>
       <section className={style.logo}>
-        <img className={style.iso} src="../../public/iso.png" alt="" />
+        <img className={style.iso} src="/iso.png" alt="isologo" />
         <p className={style.padi}>Padi</p>
       </section>
       <section className={style.links}>
