@@ -7,7 +7,7 @@ const Banner = () => {
     const placa = locationPlaca[1]
     return (
         <div className={style.container}>
-            <p>{placa}</p>
+            <h1>{placa}</h1>
         </div>
     )
 }
