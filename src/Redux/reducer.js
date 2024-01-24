@@ -33,6 +33,10 @@ const rootReducer = (state = initialState, { type, payload, dId }) => {
         acc[id.dId] = 0;
         return acc;
       }, {});
+      const dinObject = payload.reduce((acc, id) => {
+        acc[id.dId] = false;
+        return acc;
+      }, {});
       return {
         ...state,
         placas: payload,
@@ -41,9 +45,9 @@ const rootReducer = (state = initialState, { type, payload, dId }) => {
         ain2: ainObject,
         ain3: ainObject,
         din0: ainObject,
-        din1: ainObject,
-        din2: ainObject,
-        din3: ainObject,
+        din1: dinObject,
+        din2: dinObject,
+        din3: dinObject,
       };
     ////////////////////////////////////////////
     case EDIT_DIN0:
