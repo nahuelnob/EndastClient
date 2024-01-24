@@ -10,7 +10,7 @@ const Out2 = ({topic}) => {
   const dId = topic.split('/')[1]
   
   const [switcher, setSwitcher] = useState(false);
-  const [name, setName] = useState("out0");
+  const [name, setName] = useState("out2");
   const [configName, setConfigName] = useState(false);
 
   const handlerName = (e) => {
