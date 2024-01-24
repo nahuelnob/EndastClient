@@ -3,7 +3,7 @@ import NavBar from "../../Components/NavBar/NavBar";
 import Banner from "../../Components/Banner/Banner";
 import style from './PadiV3.module.css'
 
-const PadiV3 = ({ topic }) => {
+const PadiV3 = ({ topic, host }) => {
   return (
     <div className={style.container}>
       <header className={style.Banner}>
@@ -13,7 +13,7 @@ const PadiV3 = ({ topic }) => {
         <NavBar />
       </nav>
       <main className={style.Dashboard}>
-        <Dashboard topic={topic} />
+        <Dashboard topic={topic} host={host} />
       </main>
     </div>
   );

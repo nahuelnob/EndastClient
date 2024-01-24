@@ -13,27 +13,27 @@ import Out3 from "../../Components/Out3/Out3";
 
 import style from "./Dashboard.module.css";
 
-const Dashboard = ({ topic }) => {
+const Dashboard = ({ topic, host }) => {
   return (
     <div className={style.container}>
-  
+
       <section className={style.Ain}>
-        <Ain0 topic={topic} />
-        <Ain1 topic={topic} />
-        <Ain2 topic={topic} />
-        <Ain3 topic={topic} />
+        <Ain0 topic={topic} host={host} />
+        <Ain1 topic={topic} host={host} />
+        <Ain2 topic={topic} host={host} />
+        <Ain3 topic={topic} host={host} />
       </section>
       <section className={style.Din}>
-        <Din0 topic={topic} />
-        <Din1 topic={topic} />
-        <Din2 topic={topic} />
-        <Din3 topic={topic} />
+        <Din0 topic={topic} host={host}/>
+        <Din1 topic={topic} host={host}/>
+        <Din2 topic={topic} host={host}/>
+        <Din3 topic={topic} host={host}/>
       </section>
       <section className={style.Out}>
-        <Out0 topic={topic} />
-        <Out1 topic={topic} />
-        <Out2 topic={topic} />
-        <Out3 topic={topic} />
+        <Out0 topic={topic} host={host}/>
+        <Out1 topic={topic} host={host}/>
+        <Out2 topic={topic} host={host}/>
+        <Out3 topic={topic} host={host}/>
       </section>
     </div>
   );
