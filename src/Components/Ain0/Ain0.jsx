@@ -77,7 +77,7 @@ const Ain0 = ({ topic, client }) => {
           className={style.buttonConfig}
           onClick={() => handlerConfigName()}
         >
-          <img src="../../public/gear-solid.svg" alt="" />
+          <img src="/gear-solid.svg" alt="" />
         </button>
       </header>
       <main className={style.main}>

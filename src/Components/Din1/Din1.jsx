@@ -43,43 +43,24 @@ const Din1 = ({ topic }) => {
 
   return (
     <div className={style.container}>
-      <header className={style.titulo}>
-        <p style={{ marginLeft: "1rem" }}> {name}</p>
+      <header className={style.header}>
         <button
           className={style.buttonConfig}
           onClick={() => handlerConfigName()}
         >
-          <img src="../../public/gear-solid.svg" alt="" />
+          <img src="/gear-solid.svg" alt="" />
         </button>
       </header>
-      <h1
-        style={{
-          color: `${din1 ? "rgb(46,104,46)" : "rgb(219,51,51)"}`,
-          transition: "ease-in-out 0.3s",
-        }}
-      >
-        {" "}
-        {din1 ? "Prendido" : "Apagado"}
-      </h1>
-      <section className={style.luces}>
-        <div
-          className={style.apagado}
-          style={{
-            backgroundColor: `${din1 ? "rgb(219,51,51)" : "red"}`,
-            filter: `${din1 ? "none" : "drop-shadow(0px 0px 5px red)"}`,
-          }}
-        ></div>
-        <div
-          className={style.prendido}
-          style={{
-            backgroundColor: `${din1 ? "rgb(34, 163, 34)" : "rgb(46,104,46)"}`,
-            filter: `${
-              din1 ? "drop-shadow(0px 0px 5px rgb(46,104,46))" : "none"
-            }`,
-          }}
-        ></div>
-      </section>
-
+      <main className={style.main}>
+        {din1 ?
+         <section className={style.encendido}>
+         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style={{ width: "4vh", filter:"saturate(350%)", filter:"drop-shadow(0px 0px 3px #63dcec)"}}><path d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V256c0 17.7 14.3 32 32 32s32-14.3 32-32V32zM143.5 120.6c13.6-11.3 15.4-31.5 4.1-45.1s-31.5-15.4-45.1-4.1C49.7 115.4 16 181.8 16 256c0 132.5 107.5 240 240 240s240-107.5 240-240c0-74.2-33.8-140.6-86.6-184.6c-13.6-11.3-33.8-9.4-45.1 4.1s-9.4 33.8 4.1 45.1c38.9 32.3 63.5 81 63.5 135.4c0 97.2-78.8 176-176 176s-176-78.8-176-176c0-54.4 24.7-103.1 63.5-135.4z" fill="#63dcec" /></svg><span style={{position:"absolute", left:"5vh"}}>On</span>
+       </section> :
+       <section className={style.apagado}><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style={{ width: "4vh", filter:"saturate(350%)", filter:"drop-shadow(0px 0px 3px #202020)"}}><path d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V256c0 17.7 14.3 32 32 32s32-14.3 32-32V32zM143.5 120.6c13.6-11.3 15.4-31.5 4.1-45.1s-31.5-15.4-45.1-4.1C49.7 115.4 16 181.8 16 256c0 132.5 107.5 240 240 240s240-107.5 240-240c0-74.2-33.8-140.6-86.6-184.6c-13.6-11.3-33.8-9.4-45.1 4.1s-9.4 33.8 4.1 45.1c38.9 32.3 63.5 81 63.5 135.4c0 97.2-78.8 176-176 176s-176-78.8-176-176c0-54.4 24.7-103.1 63.5-135.4z" fill="#303030" /></svg><span style={{position:"absolute", left:"5vh"}}>Off</span></section>}
+      </main>
+      <footer className={style.footer}>
+        <h3 className={style.titulo}>{name}</h3>
+      </footer>
       <div
         className={style.inputDiv}
         style={{ display: `${configName ? "flex" : "none"}` }}
@@ -99,9 +80,9 @@ const Din1 = ({ topic }) => {
           {" "}
           Cambiar{" "}
         </button>
+        <button className={style.close} onClick={() => setConfigName(false)}>x</button>
       </div>
     </div>
   );
 };
-
 export default Din1;

@@ -1,68 +1,85 @@
 .container {
+  width: 95%;
+  height: 89%;
+  border-radius: 1rem;
+  align-self: center;
+  justify-self: center;
+  border: solid 0.1px #90909075;
+  overflow: hidden;
+  position: relative;
+  display: grid;
+  grid-template-rows: repeat(7, 1fr);
+  /* background: linear-gradient(to right, #25555c, #25555c, #3fa1ad); */
+  background: linear-gradient(to right, #101010, #101010,#202020);
+}
+.header {
+  grid-row: span 1;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
+  justify-content: end;
+  width: 100%;
 }
 .titulo {
+  white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+  overflow: hidden; /* Oculta el exceso de texto que no cabe en el contenedor */
+  text-overflow: ellipsis; /* Muestra puntos suspensivos (...) cuando el texto se corta */
+  max-width: 120px; /* Puedes ajustar esto según el ancho máximo que desees */
+  display: inline-block; /* Para que el contenedor se ajuste al tamaño del texto */
+}
+.main {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  height: 2rem;
-  font-style: italic;
-  font-weight: bold;
+  justify-content: center;
+  grid-row: span 4;
+  margin-bottom: 10%;
 }
-
-.luces {
-  width: 6rem;
-  height: 3rem;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: 1fr;
-  align-items: center;
-}
-
-.prendido {
-  width: 1.5rem;
-  height: 1.5rem;
-  border-radius: 100%;
-  justify-self: center;
-  margin-inline-start: 0.5rem;
-}
+.encendido,
 .apagado {
-  width: 1.5rem;
-  height: 1.5rem;
-  border-radius: 100%;
+  width: 100%;
+  font-family: techfont;
+  display: flex;
+  align-items: center;
+  font-size: 3vh;
+  color: #909090;
+  position: relative;
+  left: 6vh;
+}
+
+.footer {
+  margin-top: -1vh;
+  grid-row: span 2;
+  font-family: techfont;
   justify-self: center;
-  margin-inline-end: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: solid 0.1px #909090;
+  width: 80%;
+  font-size: 2vh;
+  color: #d4d4d4;
 }
 
 .inputDiv {
   position: absolute;
-  background-color: #303030f8;
+  background-color: #202020;
   width: 100%;
-  height: 100vh;
-  left: 0;
-  right: 0;
-  top: 0;
+  height: 100%;
   z-index: 1;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: #d4d4d4;
 }
 
 .input {
-  width: 10rem;
+  width: 7rem;
   height: 2rem;
   border-radius: 0.2rem;
   border: none;
   text-indent: 0.5rem;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   filter: drop-shadow(0px 2px 3px black);
-  background-color: antiquewhite;
+  background-color: #d4d4d4;
+  margin-top: -3vh;
 }
 .input:focus {
   border: none;
@@ -70,27 +87,43 @@
 }
 
 .botonCambiar {
-  width: 10rem;
+  width: 7.3rem;
   height: 2rem;
   border-radius: 0.2rem;
   border: none;
-  margin-top: 1rem;
-  background-color: #286345;
-  filter: drop-shadow(0px 2px 3px black);
+  margin-top: 1vh;
+  background-color: #63dcec;
+  filter: drop-shadow(0px 2px 3px black) brightness(85%);
   cursor: pointer;
-  color: antiquewhite;
 }
 .botonCambiar:hover {
-  background-color: #1b422e;
+  background-color: #63dcec;
+  filter: drop-shadow(0px 2px 5px black) brightness(95%);
+  cursor: pointer;
 }
 
 .buttonConfig {
-  margin-right: 1rem;
+  margin-right: 1%;
+  margin-top: 5%;
   border: none;
   background-color: transparent;
   cursor: pointer;
 }
 .buttonConfig:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
   transition: ease-in-out 0.2s;
+}
+.close {
+  position: absolute;
+  top: 0.5vh;
+  right: 0.5vw;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #d4d4d4;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+.close:hover {
+  filter: brightness(50%);
 }
