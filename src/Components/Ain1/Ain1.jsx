@@ -1,12 +1,13 @@
-import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
 import mqtt from "mqtt";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { editAin1 } from "../../Redux/actions";
 import style from "./Ain1.module.css";
-const HOST = "192.168.0.46";
 
-const Ain1 = ({ topic }) => {
+const Ain1 = ({ topic, host }) => {
+
+  const HOST = host
   const TOPIC = `${topic}iSK4MVs6tO/sdata`;
   const dId = topic.split("/")[1];
 
@@ -26,12 +27,12 @@ const Ain1 = ({ topic }) => {
 
   const porcentaje = Math.round((Number(ain1[dId]) * 100) / 4095);
 
-    /////////////////////////////////////////////////////////////////
-    const strokeWidth = 20;
-    const radius = 65 - strokeWidth / 2;
-    const circumference = 2 * Math.PI * radius;
-    const offset = circumference - (porcentaje / 100) * circumference;
-    /////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////
+  const strokeWidth = 20;
+  const radius = 65 - strokeWidth / 2;
+  const circumference = 2 * Math.PI * radius;
+  const offset = circumference - (porcentaje / 100) * circumference;
+  /////////////////////////////////////////////////////////////////
 
   useEffect(() => {
     const client = mqtt.connect(`ws://${HOST}:8083/mqtt`);
@@ -60,7 +61,7 @@ const Ain1 = ({ topic }) => {
       const match = message.toString().match(/\d+/);
       if (match) {
         let porcent = Math.round((Number(match[0]) * 100) / 4095);
-        dispatch(editAin1(match[0]));
+        dispatch(editAin1(match[0], dId));
         post({ value: match[0], porcentaje: porcent, placa: dId });
       }
     });

@@ -3,9 +3,10 @@ import { editDin3 } from "../../Redux/actions";
 import React, { useEffect, useState } from "react";
 import mqtt from "mqtt";
 import style from "./Din3.module.css";
-const HOST = "192.168.0.46";
 
-const Din3 = ({ topic }) => {
+const Din3 = ({ topic, host }) => {
+
+  const HOST = host
   const TOPIC = `${topic}9UaEQR4I36/sdata`;
   const dId = topic.split("/")[1];
 
@@ -37,7 +38,7 @@ const Din3 = ({ topic }) => {
     // Manejo de mensajes recibidos
     client.on("message", (topic, message) => {
       const match = message.toString().match(/\d+/);
-      match[0] === "1" ? dispatch(editDin3(true)) : dispatch(editDin3(false));
+      match[0] === "1" ? dispatch(editDin3(true, dId)) : dispatch(editDin3(false, dId));
     });
   }, []); // El segundo parámetro [] asegura que este efecto se ejecute solo una vez al montar el componente
 

@@ -1,25 +1,25 @@
-import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
 import mqtt from "mqtt";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { editAin0 } from "../../Redux/actions";
 import style from "./Ain0.module.css";
-const HOST = "192.168.0.46";
 
-const Ain0 = ({ topic, client }) => {
+const Ain0 = ({ topic, host }) => {
 
+  const HOST = host
   const TOPIC = `${topic}NrFMgh03GO/sdata`;
   const dId = topic.split("/")[1];
-  
+
   const dispatch = useDispatch();
   const ain0 = useSelector((state) => state.ain0);
   const [name, setName] = useState("ain0");
   const [configName, setConfigName] = useState(false);
-  
+
   const handlerName = (e) => {
     setName(e.target.value);
   };
-  
+
   const handlerConfigName = () => {
     !configName && setConfigName(true);
     configName && setConfigName(false);

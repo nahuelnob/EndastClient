@@ -1,11 +1,10 @@
-import React, { useState } from "react";
 import mqtt from "mqtt";
+import React, { useState } from "react";
 import style from "./Out1.module.css";
-// const dId = "testid";
-// const TOPIC = `64c314be56857449102a9d4b/${dId}/uX0NxQhNrr/actdata`;
-const HOST = "192.168.0.46";
 
-const Out1 = ({topic}) => {
+const Out1 = ({ topic, host }) => {
+
+  const HOST = host
   const TOPIC = `${topic}uX0NxQhNrr/actdata`;
   const dId = topic.split('/')[1]
   const [switcher, setSwitcher] = useState(false);

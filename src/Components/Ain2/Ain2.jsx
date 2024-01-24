@@ -4,9 +4,10 @@ import React, { useEffect, useState } from "react";
 import mqtt from "mqtt";
 import style from "./Ain2.module.css";
 import { editAin2 } from "../../Redux/actions";
-const HOST = "192.168.0.46";
 
-const Ain2 = ({ topic, client }) => {
+const Ain2 = ({ topic, host }) => {
+
+  const HOST = host
   const TOPIC = `${topic}AM8p6BX0gm/sdata`;
   const dId = topic.split("/")[1];
   const dispatch = useDispatch();
@@ -61,7 +62,7 @@ const Ain2 = ({ topic, client }) => {
       if (match) {
         let porcent = Math.round((Number(match[0]) * 100) / 4095);
 
-        dispatch(editAin2(match[0]));
+        dispatch(editAin2(match[0], dId));
         post({ value: match[0], porcentaje: porcent, placa: dId });
       }
     });

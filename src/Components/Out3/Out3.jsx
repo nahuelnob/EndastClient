@@ -1,11 +1,10 @@
-import React, { useState } from "react";
 import mqtt from "mqtt";
+import React, { useState } from "react";
 import style from "./Out3.module.css";
-// const dId = "testid";
-// const TOPIC = `64c314be56857449102a9d4b/${dId}/1QMLeg5CT4/actdata`;
-const HOST = "192.168.0.46";
 
-const Out3 = ({topic}) => {
+const Out3 = ({ topic, host }) => {
+
+  const HOST = host
   const TOPIC = `${topic}1QMLeg5CT4/actdata`;
   const dId = topic.split('/')[1]
 
