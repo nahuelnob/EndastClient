@@ -22,13 +22,21 @@ const initialState = {
   ain3: 0,
 };
 
-const rootReducer = (state = initialState, { type, payload }) => {
+console.log(initialState);
+
+const rootReducer = (state = initialState, { type, payload, dId }) => {
   switch (type) {
     ////////////////////////////////////////////
     case PLACAS:
+      // const ain0Values = payload.map((Id) => Id.dId);
+      const ain0Object = payload.reduce((acc, id) => {
+        acc[id.dId] = 0;
+        return acc;
+      }, {});
       return {
         ...state,
         placas: payload,
+        ain0: ain0Object,
       };
     ////////////////////////////////////////////
     case EDIT_DIN0:
@@ -55,7 +63,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
     case EDIT_AIN0:
       return {
         ...state,
-        ain0: payload,
+        ain0: { [dId]: payload },
       };
     case EDIT_AIN1:
       return {

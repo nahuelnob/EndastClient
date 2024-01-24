@@ -3,7 +3,6 @@ import { NavLink, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 const NavBar = () => {
   const location = useLocation()
-  console.log(location.pathname);
   const placas = useSelector((state) => state.placas);
   return (
     <nav className={style.container}>
@@ -18,6 +17,7 @@ const NavBar = () => {
             <NavLink
               to={`/${dId}`}
               style={{ textDecoration: "none", color: "white" }}
+              target="_blank"
             >
               <div className={style.placas}>
                {location.pathname === `/${dId}` ? <button className={style.linkActive}>{dId}</button> : <button className={style.link}>{dId}</button>}

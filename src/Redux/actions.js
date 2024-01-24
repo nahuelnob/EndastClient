@@ -75,12 +75,13 @@ export const editDin3 = (userData) => {
   };
 };
 /////////////////////////////////////////////////////
-export const editAin0 = (userData) => {
+export const editAin0 = (userData, dId) => {
   return async function (dispatch) {
     try {
       return dispatch({
         type: EDIT_AIN0,
         payload: userData,
+        dId: dId
       });
     } catch (error) {
       showErrorAlert(error.message);

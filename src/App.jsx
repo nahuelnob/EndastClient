@@ -24,7 +24,6 @@ import { addPlacas } from "./Redux/actions";
 function App() {
   const dispatch = useDispatch()
   const placas = useSelector((state) => state.placas)
-  console.log(placas);
   // const [placa, setPlaca] = useState(null);
   useEffect(() => {
     dispatch(addPlacas())

@@ -11,24 +11,24 @@ const HOST = "192.168.0.46";
 const Ain0 = ({ topic, client }) => {
 
   const TOPIC = `${topic}NrFMgh03GO/sdata`;
-  console.log(TOPIC);
   const dId = topic.split("/")[1];
-
+  
   const dispatch = useDispatch();
   const ain0 = useSelector((state) => state.ain0);
   const [name, setName] = useState("ain0");
   const [configName, setConfigName] = useState(false);
-
+  
   const handlerName = (e) => {
     setName(e.target.value);
   };
-
+  
+  console.log(ain0);
   const handlerConfigName = () => {
     !configName && setConfigName(true);
     configName && setConfigName(false);
   };
 
-  const porcentaje = Math.round((Number(ain0) * 100) / 4095);
+  const porcentaje = Math.round((Number(ain0[dId]) * 100) / 4095);
   /////////////////////////////////////////////////////////////////
   const strokeWidth = 20;
   const radius = 65 - strokeWidth / 2;
@@ -61,7 +61,7 @@ const Ain0 = ({ topic, client }) => {
       const match = message.toString().match(/\d+/);
       if (match) {
         let porcent = Math.round((Number(match[0]) * 100) / 4095);
-        dispatch(editAin0(match[0]));
+        dispatch(editAin0(match[0], dId));
         post({ value: match[0], porcentaje: porcent, placa: dId });
         // console.log(
         //   `Mensaje recibido en el tema ${topic}: ${message.toString()}`
