@@ -21,7 +21,8 @@ function App() {
         <Route path="/" element={<Landing />} />;
         {placas &&
           placas.map((pl) => {
-            const { dId, topic } = pl;
+            const { dId } = pl;
+            const topic =  `topic/device_${dId}/`
             return (
               <Route path={`/${dId}`} element={<PadiV3 topic={topic} host={HOST} />} />
             );
