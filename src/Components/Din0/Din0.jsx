@@ -14,7 +14,6 @@ const Din0 = ({ topic, host }) => {
   const dispatch = useDispatch();
   const [name, setName] = useState("din0");
   const [configName, setConfigName] = useState(false);
-console.log(din0);
   const handlerName = (e) => {
     setName(e.target.value);
   };
